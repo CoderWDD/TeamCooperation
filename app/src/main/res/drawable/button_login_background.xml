@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="2dp"
+                android:right="2dp"
+                android:left="1dp"/>
+            <solid android:color="@color/button_login_background_0C" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="2dp"
+                android:right="2dp"
+                android:left="1dp"/>
+            <solid android:color="@color/button_login_background_1C" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <padding
+                android:bottom="2dp" />
+            <solid android:color="@color/button_login_background_2C" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle" >
+            <solid android:color="@color/button_login_background_3C" />
+            <corners android:radius="10dp" />
+            <padding
+                android:bottom="2dp" />
+        </shape>
+    </item>
+
+
+
+</layer-list>

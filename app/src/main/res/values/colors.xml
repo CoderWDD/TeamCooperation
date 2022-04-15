@@ -15,6 +15,9 @@
     <color name="elevation_10">#109D5625</color>
     <color name="elevation_15">#159D5625</color>
     <color name="elevation_3d">#209D5625</color>
-    <color name="button_login_background">#3CD1783B</color>
+    <color name="button_login_background_0C">#0CD1783B</color>
+    <color name="button_login_background_1C">#1CD1783B</color>
+    <color name="button_login_background_2C">#2CD1783B</color>
+    <color name="button_login_background_3C">#3CD1783B</color>
     <color name="button_sign_up_background">#1C786048</color>
 </resources>
