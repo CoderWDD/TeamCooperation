@@ -20,7 +20,8 @@ public interface RetrofitRequest_Interface {
     Call<ResponseBody> userLogin(@Body UserLogin userLogin);
 
     @POST("user/register")
-    Call<ResponseBody> userRegister(@Header("token") String token,@Body User user);
+    Call<ResponseBody> userRegister(@Body User userEntity);
+
 
     @POST("user/delete")
     Call<ResponseBody> userDelete(@Header("token") String token,@Body String userName);

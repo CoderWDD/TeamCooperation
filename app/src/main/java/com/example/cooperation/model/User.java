@@ -1,5 +1,14 @@
 package com.example.cooperation.model;
 
+import androidx.annotation.Nullable;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 
 public class User {
@@ -13,7 +22,7 @@ public class User {
     private Date createTime;
     private int sex;
     private String description;
-    private Byte[] avatar;
+    private byte[] avatar;
 
     public String getNickName() {
         return nickName;
@@ -95,11 +104,12 @@ public class User {
         this.description = description;
     }
 
-    public Byte[] getAvatar() {
+
+    public byte[] getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Byte[] avatar) {
+    public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
 }

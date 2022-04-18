@@ -10,6 +10,14 @@
     <string name="password_input_hint">Password:</string>
     <string name="username_input_hint">Username:</string>
     <string name="login">Login</string>
-    <string name="sign_up">SignUp</string>
+    <string name="sign_up">Sign Up</string>
     <string name="image_logo_description">Splash image missing!</string>
+    <!-- Strings related to signup -->
+    <string name="signup_for_continue">Hello there, sign up to continue.</string>
+    <string name="first_name">FirstName</string>
+    <string name="last_name">LastName</string>
+    <string name="department">Department</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 </resources>
