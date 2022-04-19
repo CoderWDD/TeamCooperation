@@ -5,4 +5,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="navigation_bottom_style" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/orange_brown</item>
+        <item name="android:textColorSecondary">@color/navigation_bottom_item_uncheck</item>
+    </style>
+
 </resources>

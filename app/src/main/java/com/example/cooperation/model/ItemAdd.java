@@ -3,12 +3,22 @@ package com.example.cooperation.model;
 import java.util.Date;
 
 public class ItemAdd {
+    private int itemId;
     private int projectId;
     private String itemName;
     private String author;
     private String executor;
     private Date itemTime;
     private String description;
+    private String status;
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
 
     public int getProjectId() {
         return projectId;
@@ -56,5 +66,13 @@ public class ItemAdd {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

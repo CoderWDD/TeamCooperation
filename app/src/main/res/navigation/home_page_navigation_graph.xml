@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_page_navigation_graph"
+    app:startDestination="@id/pageItemToDoFragment">
+
+    <fragment
+        android:id="@+id/pageItemToDoFragment"
+        android:name="com.example.cooperation.PageItemToDoFragment"
+        android:label="fragment_page_item_to_do"
+        tools:layout="@layout/fragment_page_item_to_do" />
+    <fragment
+        android:id="@+id/pageProjectsFragment"
+        android:name="com.example.cooperation.PageProjectsFragment"
+        android:label="fragment_page_projects"
+        tools:layout="@layout/fragment_page_projects" />
+    <fragment
+        android:id="@+id/pageProfileFragment"
+        android:name="com.example.cooperation.PageProfileFragment"
+        android:label="fragment_page_profile"
+        tools:layout="@layout/fragment_page_profile" />
+</navigation>

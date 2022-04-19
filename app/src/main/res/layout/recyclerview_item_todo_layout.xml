@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="taskItem"
+            type="com.example.cooperation.model.ItemAdd" />
+
+        <variable
+            name="randomImageUrl"
+            type="String" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemImage="@{randomImageUrl}"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/item_name"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_item_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.itemName}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/belong_to_project"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_project"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.projectId}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/status"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.status}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/executor"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_executor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.executor}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/creator"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_creator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.author}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/create_time"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_create_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.itemTime.toString()}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/description"
+                            android:fontFamily="@font/no236"
+                            android:layout_marginRight="10dp"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                        <TextView
+                            android:id="@+id/recyclerview_todo_item_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{taskItem.description}"
+                            android:fontFamily="@font/no236"
+                            android:textSize="20sp"
+                            android:textColor="@color/orange_brown_item"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

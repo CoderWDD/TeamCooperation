@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange_brown" >#FFD87848</color>
+    <color name="orange_brown_item" >#CCD87848</color>
     <color name="orange_brown_hint" >#80D87848</color>
     <color name="input_stoke">#259D5625</color>
     <color name="test">#0DCCCCCC</color>
@@ -20,4 +21,5 @@
     <color name="button_login_background_2C">#2CD1783B</color>
     <color name="button_login_background_3C">#3CD1783B</color>
     <color name="button_sign_up_background">#1C786048</color>
+    <color name="navigation_bottom_item_uncheck">#46464646</color>
 </resources>

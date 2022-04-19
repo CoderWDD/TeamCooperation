@@ -31,7 +31,6 @@ public class PageSignUpDataBinding {
         observableField.set(user);
     }
 
-
     public void onSignUpClicked(View view){
         // 如果有长度不合格的，就提示，不进行网络请求
         if (!UserSignUpCheckUtil.check(context,getUserName(),getPassword(),getFirstName(),getLastName(),getDepartment(),getPhone())) {
@@ -62,8 +61,6 @@ public class PageSignUpDataBinding {
                 Toast.makeText(context,"注册失败！",Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
     public String getNickName() {
