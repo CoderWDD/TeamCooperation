@@ -11,6 +11,7 @@ public class ItemAdd {
     private Date itemTime;
     private String description;
     private String status;
+    private String projectName;
 
     public int getItemId() {
         return itemId;
@@ -74,5 +75,13 @@ public class ItemAdd {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 }

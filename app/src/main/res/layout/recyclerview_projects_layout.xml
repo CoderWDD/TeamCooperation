@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="projects"
+            type="com.example.cooperation.model.Project" />
+        <variable
+            name="dateFormatUtil"
+            type="com.example.cooperation.utils.DateFormatUtil" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="15dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/projects_project_name"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                    <TextView
+                        android:id="@+id/recyclerview_projects_project_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{projects.projectName}"
+                        android:fontFamily="@font/no236"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/projects_invitation_code"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                    <TextView
+                        android:id="@+id/recyclerview_projects_invitation_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{projects.invitationCode}"
+                        android:fontFamily="@font/no236"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                    <TextView
+                        android:id="@+id/recyclerview_projects_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{projects.status}"
+                        android:fontFamily="@font/no236"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/creator"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                    <TextView
+                        android:id="@+id/recyclerview_projects_creator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{projects.creator}"
+                        android:fontFamily="@font/no236"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/create_time"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                    <TextView
+                        android:id="@+id/recyclerview_projects_create_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{projects.projectTime.toString()}"
+                        android:fontFamily="@font/no236"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginRight="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                    <TextView
+                        android:id="@+id/recyclerview_projects_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{projects.description}"
+                        android:fontFamily="@font/no236"
+                        android:textSize="20sp"
+                        android:textColor="@color/orange_brown_item"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

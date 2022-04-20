@@ -15,7 +15,8 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -25,10 +26,6 @@
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:itemImage="@{randomImageUrl}"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -86,7 +83,7 @@
                             android:id="@+id/recyclerview_todo_item_project"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{taskItem.projectId}"
+                            android:text="@{taskItem.projectName}"
                             android:fontFamily="@font/no236"
                             android:textSize="20sp"
                             android:textColor="@color/orange_brown_item"/>

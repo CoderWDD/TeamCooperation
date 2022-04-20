@@ -43,6 +43,14 @@
     <string name="description_test">Nothing to say!</string>
     <string name="belong_to_project">BelongTo: </string>
     <string name="belong_to_project_test">TeamCooperation</string>
+    <string name="item_to_do_label">Items To Do!</string>
+
+    <!-- Strings related to projects -->
+    <string name="projects_to_do_label">Projects To Do!</string>
+    <string name="projects_project_name">ProjectName: </string>
+    <string name="projects_project_time">ProjectTime: </string>
+    <string name="projects_invitation_code">InvitationCode: </string>
+    <string name="projects_button_plus">Add a new projects!</string>
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>
