@@ -54,4 +54,7 @@
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>
+
+    <!-- Strings related to profile -->
+    <string name="profile_my_profiles">My Profiles!</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.cooperation.databing;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
 public class FragmentProjectsDataBinding {
     private Context context;
@@ -12,5 +13,6 @@ public class FragmentProjectsDataBinding {
 
     public void onFloatingActionButtonClicked(View view){
         // TODO 弹出一个框，让选择添加projects还是加入别人的projects
+        Toast.makeText(context,"asdasdasd",Toast.LENGTH_SHORT).show();
     }
 }

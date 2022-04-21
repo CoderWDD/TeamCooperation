@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -23,20 +21,18 @@ public class PageHomeActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
         NavController navController = navHostFragment.getNavController();
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-
-        Toolbar toolbar = new Toolbar(this);
-        this.setSupportActionBar(toolbar);
-
-        NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
 
-
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
+//        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 //
+//        Toolbar toolbar = new Toolbar(this);
+//        this.setSupportActionBar(toolbar);
+//
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
 //
 //        NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
 
+        NavigationUI.setupWithNavController(bottomNavigationView,navController);
 
     }
 }

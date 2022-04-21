@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.cooperation.databinding.FragmentPageProjectsBinding;
+import com.example.cooperation.databing.FragmentProjectsDataBinding;
 import com.example.cooperation.databing.adapter.RecyclerViewAdapterForProjects;
 import com.example.cooperation.viewmodel.RecyclerViewProjectsViewModel;
 
@@ -28,6 +29,11 @@ public class PageProjectsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         FragmentPageProjectsBinding fragmentPageProjectsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_page_projects, container, false);
+
+        FragmentProjectsDataBinding fragmentProjectsDataBinding = new FragmentProjectsDataBinding(this.getContext());
+
+        fragmentPageProjectsBinding.setProjectsEventHandler(fragmentProjectsDataBinding);
+
         fragmentPageProjectsBinding.recyclerviewProjects.setLayoutManager(new LinearLayoutManager(this.getContext()));
         fragmentPageProjectsBinding.recyclerviewProjects.setHasFixedSize(true);
 
