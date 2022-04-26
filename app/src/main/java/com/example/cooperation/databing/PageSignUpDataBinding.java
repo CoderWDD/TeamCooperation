@@ -52,7 +52,7 @@ public class PageSignUpDataBinding {
                     // TODO 将注册的用户名和用户密码返回，方便登录
                     ((Activity)context).finish();
                 }else {
-                    Toast.makeText(context,response.body().getData(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -27,7 +27,7 @@
     <string name="menu_bottom_nav_todo">ToDo</string>
     <string name="menu_bottom_nav_projects">Projects</string>
     <string name="menu_bottom_nav_profile">Profile</string>
-    
+
     <!-- Strings related to item -->
     <string name="item_name">ItemName: </string>
     <string name="item_name_test">help</string>
@@ -44,6 +44,7 @@
     <string name="belong_to_project">BelongTo: </string>
     <string name="belong_to_project_test">TeamCooperation</string>
     <string name="item_to_do_label">Items To Do!</string>
+    <string name="item_details">Item Details</string>
 
     <!-- Strings related to projects -->
     <string name="projects_to_do_label">Projects To Do!</string>
@@ -51,10 +52,14 @@
     <string name="projects_project_time">ProjectTime: </string>
     <string name="projects_invitation_code">InvitationCode: </string>
     <string name="projects_button_plus">Add a new projects!</string>
+    <string name="project_details">Project Details</string>
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>
 
     <!-- Strings related to profile -->
     <string name="profile_my_profiles">My Profiles!</string>
+    <string name="profile_setting">Setting</string>
+    <string name="profile_modify_info">Modify Info</string>
+    <string name="profile_logout">Logout</string>
 </resources>

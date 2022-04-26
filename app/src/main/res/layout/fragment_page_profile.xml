@@ -44,6 +44,7 @@
                 android:background="@color/orange_brown_hint"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -102,15 +103,61 @@
                 android:background="@color/orange_brown_hint"/>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="15dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="15dp"
+                    android:paddingBottom="15dp">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/profile_button_modify_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_modify_info"
+                        android:background="@drawable/button_profile_background"
+                        android:fontFamily="@font/no236"
+                        android:textColor="@color/orange_brown"
+                        android:layout_marginTop="12dp"
+                        android:textSize="25sp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_setting"
+                        android:background="@drawable/button_profile_background"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/profile_logout"
+                        android:background="@drawable/button_profile_background"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
             </com.google.android.material.card.MaterialCardView>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

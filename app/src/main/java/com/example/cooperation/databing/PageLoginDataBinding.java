@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.databinding.ObservableField;
 
+import com.example.cooperation.PageHomeActivity;
 import com.example.cooperation.SignUpPageActivity;
 import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.api.RetrofitRequest_Interface;
@@ -74,6 +75,9 @@ public class PageLoginDataBinding {
                     // TODO 登录成功后，将账号密码，token，进行本地保存
 
                     // TODO 登录成功后，跳转到主页面
+                    Intent intent = new Intent(context, PageHomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
                 }
                 Toast.makeText(context,response.body().getMessage(), Toast.LENGTH_SHORT).show();
             }
