@@ -57,6 +57,7 @@
     <string name="project_modify">Modify</string>
     <string name="project_detail_invite">Cooperator Name</string>
     <string name="project_detail_add_item">Add Item</string>
+    <string name="project_detail_add_item_to_project">Add To Project</string>
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>
