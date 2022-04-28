@@ -53,6 +53,10 @@
     <string name="projects_invitation_code">InvitationCode: </string>
     <string name="projects_button_plus">Add a new projects!</string>
     <string name="project_details">Project Details</string>
+    <string name="project_cooperators">Cooperators: </string>
+    <string name="project_modify">Modify</string>
+    <string name="project_detail_invite">Cooperator Name</string>
+    <string name="project_detail_add_item">Add Item</string>
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>

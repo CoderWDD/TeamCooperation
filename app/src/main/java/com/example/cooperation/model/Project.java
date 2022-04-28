@@ -17,6 +17,16 @@ public class Project {
 
     private String creator;
 
+    private String cooperatorsList;
+
+    public String getCooperatorsList() {
+        return cooperatorsList;
+    }
+
+    public void setCooperatorsList(String cooperatorsList) {
+        this.cooperatorsList = cooperatorsList;
+    }
+
     public int getProjectId() {
         return projectId;
     }
