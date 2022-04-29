@@ -9,15 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cooperation.R;
 import com.example.cooperation.databinding.RecyclerviewItemTodoLayoutBinding;
+import com.example.cooperation.databing.click.TaskItemClicked;
 import com.example.cooperation.model.ItemAdd;
 
 import java.util.List;
 
 public class RecyclerViewAdapterForTodo extends RecyclerView.Adapter<RecyclerViewAdapterForTodo.MyRecyclerViewHolder> {
+    TaskItemClicked taskItemClicked;
     private List<ItemAdd> itemList;
 
-    public RecyclerViewAdapterForTodo(List<ItemAdd> itemList) {
+    public RecyclerViewAdapterForTodo(List<ItemAdd> itemList,TaskItemClicked taskItemClicked) {
         this.itemList = itemList;
+        this.taskItemClicked = taskItemClicked;
     }
 
     @NonNull
@@ -29,8 +32,7 @@ public class RecyclerViewAdapterForTodo extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerViewHolder holder, int position) {
-        ItemAdd item = itemList.get(position);
-        holder.recyclerviewItemTodoLayoutBinding.setTaskItem(item);
+        holder.bindViewWithTaskItem(holder.recyclerviewItemTodoLayoutBinding,itemList.get(position));
     }
 
     @Override
@@ -45,6 +47,13 @@ public class RecyclerViewAdapterForTodo extends RecyclerView.Adapter<RecyclerVie
             // getRoot() 返回的是布局文件的最外层UI视图
             super(itemView.getRoot());
             recyclerviewItemTodoLayoutBinding = itemView;
+        }
+
+        // 将点击事件与view链接
+        public void bindViewWithTaskItem(@NonNull RecyclerviewItemTodoLayoutBinding recyclerviewItemTodoLayoutBinding,ItemAdd item){
+            recyclerviewItemTodoLayoutBinding.setTaskItem(item);
+            recyclerviewItemTodoLayoutBinding.executePendingBindings();
+            recyclerviewItemTodoLayoutBinding.setOnTaskItemClicked(taskItemClicked);
         }
     }
 }
