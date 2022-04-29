@@ -13,34 +13,29 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".PageProjectDetailsActivity"
+            android:name=".ActivityFloatingActionButtonChoose"
+            android:theme="@style/Theme.MaterialComponents.Light.Dialog.Alert"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".PageHomeActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".PageProjectDetailsActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".PageHomeActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".SignUpPageActivity"
             android:exported="false" /> <!-- android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" -->
         <activity
             android:name=".LoginPageActivity"
             android:exported="false" />
-         <activity
-         android:name=".PageHomeActivity"
-         android:exported="true">
-         <intent-filter>
-         <action android:name="android.intent.action.MAIN" />
-         <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-         </activity>
-<!--        <activity-->
-<!--            android:name=".SplashPageActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <activity
+            android:name=".PageHomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

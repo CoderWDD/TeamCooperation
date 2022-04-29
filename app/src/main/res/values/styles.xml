@@ -9,6 +9,7 @@
         <item name="colorPrimary">@color/orange_brown</item>
         <item name="android:textColorSecondary">@color/navigation_bottom_item_uncheck</item>
     </style>
+
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
 
 

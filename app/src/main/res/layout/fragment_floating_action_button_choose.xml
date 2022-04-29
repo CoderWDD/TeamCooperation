@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="floatingActionButtonHandler"
+            type="com.example.cooperation.databing.FragmentFloatingActionButtonDataBinding" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_marginHorizontal="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".FragmentFloatingActionButtonChoose">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/no236"
+                android:onClick="@{floatingActionButtonHandler.onAddProjectClicked}"
+                android:stateListAnimator="@null"
+                android:text="@string/project_add_new"
+                android:textColor="@color/orange_brown"
+                android:textSize="25sp"
+                app:backgroundTint="@color/button_login_background_3C"
+                app:cornerRadius="10dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/no236"
+                android:onClick="@{floatingActionButtonHandler.onJoinToProjectClicked}"
+                android:stateListAnimator="@null"
+                android:text="@string/project_Join_into_project"
+                android:textColor="@color/orange_brown"
+                android:textSize="25sp"
+                app:backgroundTint="@color/button_login_background_3C"
+                app:cornerRadius="10dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

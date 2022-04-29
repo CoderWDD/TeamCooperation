@@ -5,6 +5,7 @@
     <string name="welcome">Welcome!</string>
     <string name="WelcomeContent">TeamCooperation is an app which help you manage your projects with your team!</string>
     <string name="welcome_skip">skip-></string>
+
     <!-- Strings related to login -->
     <string name="login_for_continue">Login for continue use TeamCooperation!</string>
     <string name="password_input_hint">Password:</string>
@@ -12,6 +13,7 @@
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
     <string name="image_logo_description">Splash image missing!</string>
+
     <!-- Strings related to signup -->
     <string name="signup_for_continue">Hello there, sign up to continue.</string>
     <string name="first_name">FirstName</string>
@@ -20,8 +22,6 @@
     <string name="phone_number">Phone Number</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Strings related to bottom menu navigation -->
     <string name="menu_bottom_nav_todo">ToDo</string>
@@ -58,6 +58,8 @@
     <string name="project_detail_invite">Cooperator Name</string>
     <string name="project_detail_add_item">Add Item</string>
     <string name="project_detail_add_item_to_project">Add To Project</string>
+    <string name="project_add_new">Add Project</string>
+    <string name="project_Join_into_project">Join Project</string>
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>

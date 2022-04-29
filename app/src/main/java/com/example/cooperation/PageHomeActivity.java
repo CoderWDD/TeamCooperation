@@ -22,6 +22,7 @@ public class PageHomeActivity extends AppCompatActivity {
         NavController navController = navHostFragment.getNavController();
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
 
+        getSupportFragmentManager();
 
 //        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 //
