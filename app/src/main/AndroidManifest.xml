@@ -13,9 +13,15 @@
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ActivityFloatingActionButtonChoose"
-            android:theme="@style/Theme.MaterialComponents.Light.Dialog.Alert"
+            android:name=".ActivityPageJoinProject"
             android:exported="false" />
+        <activity
+            android:name=".ActivityPageAddProject"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityFloatingActionButtonChoose"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.Light.Dialog.Alert" />
         <activity
             android:name=".PageProjectDetailsActivity"
             android:exported="false" /> <!-- <activity -->

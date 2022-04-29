@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.cooperation.databinding.FragmentPageProjectsBinding;
 import com.example.cooperation.databing.FragmentProjectsDataBinding;
 import com.example.cooperation.databing.adapter.RecyclerViewAdapterForProjects;
+import com.example.cooperation.databing.click.ProjectItemClick;
+import com.example.cooperation.model.Project;
 import com.example.cooperation.viewmodel.RecyclerViewProjectsViewModel;
 
 
@@ -37,7 +40,12 @@ public class PageProjectsFragment extends Fragment {
         fragmentPageProjectsBinding.recyclerviewProjects.setLayoutManager(new LinearLayoutManager(this.getContext()));
         fragmentPageProjectsBinding.recyclerviewProjects.setHasFixedSize(true);
 
-        RecyclerViewAdapterForProjects recyclerViewAdapterForProjects = new RecyclerViewAdapterForProjects(new RecyclerViewProjectsViewModel().getProjects());
+        RecyclerViewAdapterForProjects recyclerViewAdapterForProjects = new RecyclerViewAdapterForProjects(new RecyclerViewProjectsViewModel().getProjects(), new ProjectItemClick() {
+            @Override
+            public void onClicked(View view, Project project) {
+                Toast.makeText(getContext(),"Project Click",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         fragmentPageProjectsBinding.recyclerviewProjects.setAdapter(recyclerViewAdapterForProjects);
 

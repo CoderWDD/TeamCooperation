@@ -5,7 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.example.cooperation.PageProjectDetailsActivity;
+import com.example.cooperation.ActivityPageAddProject;
+import com.example.cooperation.ActivityPageJoinProject;
 
 public class FragmentFloatingActionButtonDataBinding {
     private Context context;
@@ -15,12 +16,13 @@ public class FragmentFloatingActionButtonDataBinding {
     }
 
     public void onAddProjectClicked(View view){
-        Intent intent = new Intent(context, PageProjectDetailsActivity.class);
+        Intent intent = new Intent(context, ActivityPageAddProject.class);
         ((Activity)context).startActivity(intent);
     }
 
     public void onJoinToProjectClicked(View view){
-
+        Intent intent = new Intent(context, ActivityPageJoinProject.class);
+        ((Activity)context).startActivity(intent);
     }
 
 }
