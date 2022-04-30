@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.cooperation.databinding.ActivityPageProjectDetailsBinding;
+import com.example.cooperation.databing.PageProjectDetailsDataBinding;
 
 public class PageProjectDetailsActivity extends AppCompatActivity {
     @Override
@@ -17,5 +18,8 @@ public class PageProjectDetailsActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_page_project_details);
         ActivityPageProjectDetailsBinding activityPageProjectDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_page_project_details);
 
+        activityPageProjectDetailsBinding.setEventHandler(new PageProjectDetailsDataBinding(this));
+
+        // TODO 从Bundle里取出project的值，key：project_item
     }
 }

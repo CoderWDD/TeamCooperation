@@ -1,8 +1,9 @@
 package com.example.cooperation.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ItemAdd {
+public class ItemAdd implements Serializable {
     private int itemId;
     private int projectId;
     private String itemName;

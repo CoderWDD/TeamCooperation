@@ -1,5 +1,6 @@
 package com.example.cooperation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,10 @@ public class PageItemToDoFragment extends Fragment {
             @Override
             public void onClicked(View view, ItemAdd item) {
                 Toast.makeText(getContext(),"task item click",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),ActivityPageTaskItemDetails.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("task_item",item);
+                getContext().startActivity(intent,bundle);
             }
         });
 

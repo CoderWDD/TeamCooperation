@@ -1,5 +1,6 @@
 package com.example.cooperation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,10 @@ public class PageProjectsFragment extends Fragment {
             @Override
             public void onClicked(View view, Project project) {
                 Toast.makeText(getContext(),"Project Click",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(),PageProjectDetailsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("project_item",project);
+                getContext().startActivity(intent,bundle);
             }
         });
 

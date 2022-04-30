@@ -4,39 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="EventHandler"
-            type="com.example.cooperation.databing.PageProjectDetailsDataBinding" />
-
-        <variable
-            name="projects"
-            type="com.example.cooperation.model.Project" />
-
-        <variable
-            name="dateFormatUtil"
-            type="com.example.cooperation.utils.DateFormatUtil" />
+            name="itemDetails"
+            type="com.example.cooperation.model.ItemAdd" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".PageProjectDetailsActivity">
+        tools:context=".ActivityPageTaskItemDetails"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/useless_item_details_table"
+            android:id="@+id/useless_todo_table"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/no236"
             android:gravity="center_horizontal"
-            android:text="@string/project_details"
+            android:text="@string/item_details"
             android:textColor="@color/orange_brown"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center_horizontal"
+            android:textSize="30sp" />
 
         <View
             android:layout_width="match_parent"
@@ -52,10 +41,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginVertical="25dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/useless_item_details_table">
+            app:cardElevation="5dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -76,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/no236"
-                        android:text="@string/projects_project_name"
+                        android:text="@string/item_name"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
@@ -89,7 +75,7 @@
                         android:fontFamily="@font/no236"
                         android:maxLength="30"
                         android:maxLines="1"
-                        android:text="@={projects.projectName}"
+                        android:text="@={itemDetails.itemName}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
 
@@ -107,7 +93,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/no236"
-                        android:text="@string/projects_invitation_code"
+                        android:text="@string/belong_to_project"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
@@ -116,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/no236"
-                        android:text="@{projects.invitationCode}"
+                        android:text="@{itemDetails.projectName}"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
@@ -147,7 +133,7 @@
                         android:fontFamily="@font/no236"
                         android:maxLength="30"
                         android:maxLines="1"
-                        android:text="@={projects.status}"
+                        android:text="@={itemDetails.status}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
 
@@ -174,34 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/no236"
-                        android:text="@{projects.creator}"
-                        android:textColor="@color/orange_brown_item"
-                        android:textSize="25sp" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:fontFamily="@font/no236"
-                        android:text="@string/project_cooperators"
-                        android:textColor="@color/orange_brown_item"
-                        android:textSize="25sp" />
-
-                    <TextView
-                        android:id="@+id/project_details_cooperators"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/no236"
-                        android:text="@{projects.cooperatorsList}"
+                        android:text="@{itemDetails.author}"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
@@ -228,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/no236"
-                        android:text="@{projects.projectTime.toString()}"
+                        android:text="@{itemDetails.itemTime.toString()}"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
@@ -256,11 +215,11 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="10dp"
                         android:background="@null"
-                        android:fontFamily="@font/no236"
                         android:ellipsize="end"
+                        android:fontFamily="@font/no236"
                         android:inputType="textMultiLine"
                         android:maxLines="3"
-                        android:text="@={projects.description}"
+                        android:text="@={itemDetails.description}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
 
@@ -271,33 +230,19 @@
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/no236"
                     android:stateListAnimator="@null"
                     android:text="@string/project_modify"
-                    android:onClick="@{(view)->EventHandler.onModifyClick(view,projects)}"
                     android:textColor="@color/orange_brown"
                     android:textSize="25sp"
                     app:backgroundTint="@color/button_login_background_3C"
                     app:cornerRadius="10dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/no236"
-                    android:stateListAnimator="@null"
-                    android:onClick="@{(view)->EventHandler.onAddItemClick(view,projects)}"
-                    android:text="@string/project_detail_add_item"
-                    android:textColor="@color/orange_brown"
-                    android:textSize="25sp"
-                    app:backgroundTint="@color/button_login_background_3C"
-                    app:cornerRadius="10dp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </com.google.android.material.card.MaterialCardView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
