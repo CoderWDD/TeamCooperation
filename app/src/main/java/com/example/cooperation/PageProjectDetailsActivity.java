@@ -27,6 +27,8 @@ public class PageProjectDetailsActivity extends AppCompatActivity {
 
         Project project_item = (Project) bundle.getSerializable("project_item");
 
+        String cooperators = bundle.getString("cooperators");
+
         activityPageProjectDetailsBinding.setProjects(project_item);
     }
 }

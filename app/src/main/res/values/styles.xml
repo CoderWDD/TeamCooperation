@@ -17,6 +17,9 @@
         <item name="android:windowNoTitle">true</item>//无标题
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="colorPrimary">@color/orange_brown</item>
+        <item name="colorPrimaryVariant">@color/orange_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> <!--activity出现动画-->
     </style>
 

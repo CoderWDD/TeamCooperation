@@ -20,7 +20,8 @@
             android:exported="false" />
         <activity
             android:name=".ActivityPageJoinProject"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Transparent" />
         <activity
             android:name=".ActivityPageAddProject"
             android:exported="false"
@@ -36,12 +37,12 @@
         <!-- android:exported="false" /> -->
         <activity
             android:name=".SignUpPageActivity"
-            android:exported="false" /> <!-- android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" -->
-        <activity
-            android:name=".LoginPageActivity"
             android:exported="false" />
         <activity
             android:name=".PageHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
