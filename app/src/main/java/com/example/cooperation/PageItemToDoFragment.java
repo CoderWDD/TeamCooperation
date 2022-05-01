@@ -38,7 +38,8 @@ public class PageItemToDoFragment extends Fragment {
                 Intent intent = new Intent(getContext(),ActivityPageTaskItemDetails.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("task_item",item);
-                getContext().startActivity(intent,bundle);
+                intent.putExtras(bundle);
+                getContext().startActivity(intent);
             }
         });
 

@@ -8,10 +8,10 @@ import android.view.View;
 import com.example.cooperation.ActivityPageAddProject;
 import com.example.cooperation.ActivityPageJoinProject;
 
-public class FragmentFloatingActionButtonDataBinding {
+public class ActivityFloatingActionButtonDataBinding {
     private Context context;
 
-    public FragmentFloatingActionButtonDataBinding(Context context) {
+    public ActivityFloatingActionButtonDataBinding(Context context) {
         this.context = context;
     }
 

@@ -10,7 +10,16 @@
         <item name="android:textColorSecondary">@color/navigation_bottom_item_uncheck</item>
     </style>
 
-    <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
 
+    <style name="Transparent" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowIsTranslucent">true</item><!--透明-->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>//无标题
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> <!--activity出现动画-->
+    </style>
+
+    <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
 
 </resources>

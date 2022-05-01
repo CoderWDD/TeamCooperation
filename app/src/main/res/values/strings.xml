@@ -60,6 +60,8 @@
     <string name="project_detail_add_item_to_project">Add To Project</string>
     <string name="project_add_new">Add Project</string>
     <string name="project_Join_into_project">Join Project</string>
+    <string name="project_Join_into">Join Into</string>
+    <string name="project_create">Create</string>
 
     <!--  random images url  -->
     <string name="random_images">https://source.unsplash.com/random</string>

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.cooperation.databinding.ActivityPageProjectDetailsBinding;
 import com.example.cooperation.databing.PageProjectDetailsDataBinding;
+import com.example.cooperation.model.Project;
 
 public class PageProjectDetailsActivity extends AppCompatActivity {
     @Override
@@ -20,6 +21,12 @@ public class PageProjectDetailsActivity extends AppCompatActivity {
 
         activityPageProjectDetailsBinding.setEventHandler(new PageProjectDetailsDataBinding(this));
 
-        // TODO 从Bundle里取出project的值，key：project_item
+        // 从Bundle里取出project的值，key：project_item
+
+        Bundle bundle = getIntent().getExtras();
+
+        Project project_item = (Project) bundle.getSerializable("project_item");
+
+        activityPageProjectDetailsBinding.setProjects(project_item);
     }
 }

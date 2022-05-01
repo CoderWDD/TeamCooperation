@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.cooperation.databinding.ActivityPageTaskItemDetailsBinding;
+import com.example.cooperation.model.ItemAdd;
 
 public class ActivityPageTaskItemDetails extends AppCompatActivity {
 
@@ -14,8 +15,13 @@ public class ActivityPageTaskItemDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityPageTaskItemDetailsBinding activityPageTaskItemDetails = DataBindingUtil.setContentView(this, R.layout.activity_page_task_item_details);
 
-        // TODO 取出Bundle里的item，key：task_item
+        // 取出Bundle里的item，key：task_item
 
-        // TODO 添加双向绑定和databing
+        Bundle bundle = getIntent().getExtras();
+
+        ItemAdd task_item = (ItemAdd) bundle.getSerializable("task_item");
+
+        activityPageTaskItemDetails.setItemDetails(task_item);
+
     }
 }

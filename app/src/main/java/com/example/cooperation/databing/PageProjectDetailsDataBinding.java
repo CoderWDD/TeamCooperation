@@ -19,7 +19,8 @@ public class PageProjectDetailsDataBinding {
         Intent intent = new Intent(context, ActivityPageAddItem.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("project",project);
-        context.startActivity(intent,bundle);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
     public void onModifyClick(View view,Project project){

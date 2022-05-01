@@ -6,10 +6,10 @@
     <data>
         <variable
             name="floatingActionButtonHandler"
-            type="com.example.cooperation.databing.FragmentFloatingActionButtonDataBinding" />
+            type="com.example.cooperation.databing.ActivityFloatingActionButtonDataBinding" />
     </data>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_marginHorizontal="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +19,10 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
@@ -49,5 +53,5 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

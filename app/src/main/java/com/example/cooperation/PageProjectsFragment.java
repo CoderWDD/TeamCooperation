@@ -48,7 +48,8 @@ public class PageProjectsFragment extends Fragment {
                 Intent intent = new Intent(getContext(),PageProjectDetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("project_item",project);
-                getContext().startActivity(intent,bundle);
+                intent.putExtras(bundle);
+                getContext().startActivity(intent);
             }
         });
 
