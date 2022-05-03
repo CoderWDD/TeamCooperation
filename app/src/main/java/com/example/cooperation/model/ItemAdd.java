@@ -1,7 +1,6 @@
 package com.example.cooperation.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class ItemAdd implements Serializable {
     private int itemId;
@@ -9,7 +8,7 @@ public class ItemAdd implements Serializable {
     private String itemName;
     private String author;
     private String executor;
-    private Date itemTime;
+    private String itemTime;
     private String description;
     private String status;
     private String projectName;
@@ -54,11 +53,11 @@ public class ItemAdd implements Serializable {
         this.executor = executor;
     }
 
-    public Date getItemTime() {
+    public String getItemTime() {
         return itemTime;
     }
 
-    public void setItemTime(Date itemTime) {
+    public void setItemTime(String itemTime) {
         this.itemTime = itemTime;
     }
 

@@ -1,7 +1,7 @@
 package com.example.cooperation.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 public class Project implements Serializable {
     private int projectId;
@@ -10,21 +10,21 @@ public class Project implements Serializable {
 
     private String projectName;
 
-    private Date projectTime;
+    private String projectTime;
 
     private String description;
 
     private String invitationCode;
 
-    private String creator;
+    private String author;
 
-    private String cooperatorsList;
+    private List<String> cooperatorsList;
 
-    public String getCooperatorsList() {
+    public List<String> getCooperatorsList() {
         return cooperatorsList;
     }
 
-    public void setCooperatorsList(String cooperatorsList) {
+    public void setCooperatorsList(List<String> cooperatorsList) {
         this.cooperatorsList = cooperatorsList;
     }
 
@@ -52,11 +52,11 @@ public class Project implements Serializable {
         this.projectName = projectName;
     }
 
-    public Date getProjectTime() {
+    public String getProjectTime() {
         return projectTime;
     }
 
-    public void setProjectTime(Date projectTime) {
+    public void setProjectTime(String projectTime) {
         this.projectTime = projectTime;
     }
 
@@ -76,11 +76,11 @@ public class Project implements Serializable {
         this.invitationCode = invitationCode;
     }
 
-    public String getCreator() {
-        return creator;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public void setAuthor(String creator) {
+        this.author = creator;
     }
 }

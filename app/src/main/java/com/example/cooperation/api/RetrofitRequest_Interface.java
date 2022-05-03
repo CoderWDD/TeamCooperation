@@ -2,6 +2,7 @@ package com.example.cooperation.api;
 
 import com.example.cooperation.model.ItemAdd;
 import com.example.cooperation.model.ProjectCreate;
+import com.example.cooperation.model.ProjectListResponseBody;
 import com.example.cooperation.model.ProjectModifyInfo;
 import com.example.cooperation.model.ResponseBody;
 import com.example.cooperation.model.User;
@@ -38,15 +39,15 @@ public interface RetrofitRequest_Interface {
     @POST("project/delete/{projectId}")
     Call<ResponseBody> projectDelete(@Header("token") String token, @Path("projectId") int projectId);
 
-    @POST("project/modify")
-    Call<ResponseBody> projectModify(@Header("token") String token, @Body ProjectModifyInfo projectModify);
+    @POST("project/modify/{projectId}")
+    Call<ResponseBody> projectModify(@Header("token") String token, @Body ProjectModifyInfo projectModify,@Path("projectId") int projectId);
 
     @GET("project/get/{projectId}")
     Call<ResponseBody> projectGetOne(@Header("token") String token, @Path("projectId") int projectId);
 
     // TODO 实现一个将data中的json数据转换为实体的工具类
     @GET("project/getList")
-    Call<ResponseBody> projectGetList(@Header("token") String token);
+    Call<ProjectListResponseBody> projectGetList(@Header("token") String token);
 
     @GET("project/getCooperator/{projectId}")
     Call<ResponseBody> projectGetCooperator(@Header("token") String token,@Path("projectId") int projectId);

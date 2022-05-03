@@ -1,13 +1,11 @@
 package com.example.cooperation.model;
 
-import java.util.Date;
-
 public class ProjectModifyInfo {
     private String status;
 
     private String projectName;
 
-    private Date projectTime;
+    private String projectTime;
 
     private String description;
 
@@ -27,11 +25,11 @@ public class ProjectModifyInfo {
         this.projectName = projectName;
     }
 
-    public Date getProjectTime() {
+    public String getProjectTime() {
         return projectTime;
     }
 
-    public void setProjectTime(Date projectTime) {
+    public void setProjectTime(String projectTime) {
         this.projectTime = projectTime;
     }
 

@@ -1,15 +1,20 @@
 package com.example.cooperation.viewmodel;
 
-import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
 
+import com.example.cooperation.PageProjectDetailsActivity;
 import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.api.RetrofitRequest_Interface;
-import com.example.cooperation.constant.HttpStatus;
+import com.example.cooperation.databinding.FragmentPageProjectsBinding;
+import com.example.cooperation.databing.adapter.RecyclerViewAdapterForProjects;
+import com.example.cooperation.databing.click.ProjectItemClick;
 import com.example.cooperation.model.Project;
-import com.example.cooperation.model.ResponseBody;
+import com.example.cooperation.model.ProjectListResponseBody;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,55 +22,90 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RecyclerViewProjectsViewModel {
-    public List<Project> getProjects(){
-        List<Project> projectList = new ArrayList<>();
+    List<Project> projectList;
+    private Context context;
+    private FragmentPageProjectsBinding fragmentPageProjectsBinding;
+    public RecyclerViewProjectsViewModel(FragmentPageProjectsBinding fragmentPageProjectsBinding,Context context) {
+        this.fragmentPageProjectsBinding = fragmentPageProjectsBinding;
+        this.context = context;
+        projectList = new LinkedList<>();
+    }
 
-        // TODO 网络请求，获取projects列表
+    public void refreshRecyclerViewItems(){
 
         MyRetrofit.InitInstance();
         RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
 
-        Call<ResponseBody> responseBodyCall = retrofitRequestInterface.projectGetList(MyRetrofit.getToken());
+        Call<ProjectListResponseBody> projectListResponseBodyCall = retrofitRequestInterface.projectGetList(MyRetrofit.getToken());
 
-        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+
+        projectListResponseBodyCall.enqueue(new Callback<ProjectListResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<ProjectListResponseBody> call, Response<ProjectListResponseBody> response) {
                 if (response.isSuccessful()){
-                    if (HttpStatus.OK.equals(response.body().getCode())){
-                        Log.i("myTag", "start");
+                    Project[] temp = response.body().getData();
+                    for (Project e : temp){
+                        projectList.add(e);
                     }
-                    String data = response.body().getData();
 
-                    Log.i("myTag", "onResponse: " + data);
+                    RecyclerViewAdapterForProjects recyclerViewAdapterForProjects = new RecyclerViewAdapterForProjects(projectList, new ProjectItemClick() {
+                        @Override
+                        public void onClicked(View view, final Project project) {
+                            Intent intent = new Intent(context, PageProjectDetailsActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("project_item", project);
+                            intent.putExtras(bundle);
+                            context.startActivity(intent);
+                        }
+                    });
 
-                }else {
+                    fragmentPageProjectsBinding.recyclerviewProjects.setAdapter(recyclerViewAdapterForProjects);
 
-                    return;
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<ProjectListResponseBody> call, Throwable t) {
 
             }
         });
 
-        Project project = new Project();
-        project.setProjectId(12);
-        project.setProjectName("Help");
-        project.setProjectTime(new Date());
-        project.setCreator("吴某人");
-        project.setDescription("nothing");
-        project.setStatus("Done");
-        project.setInvitationCode("asdasd");
 
 
-        projectList.add(project);
-        projectList.add(project);
-        projectList.add(project);
-        projectList.add(project);
-        projectList.add(project);
-        projectList.add(project);
+    }
+
+
+    public List<Project> getProjects(){
+        // TODO 网络请求，获取projects列表
+
+
+        MyRetrofit.InitInstance();
+        RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
+
+        Call<ProjectListResponseBody> projectListResponseBodyCall = retrofitRequestInterface.projectGetList(MyRetrofit.getToken());
+
+
+        projectListResponseBodyCall.enqueue(new Callback<ProjectListResponseBody>() {
+            @Override
+            public void onResponse(Call<ProjectListResponseBody> call, Response<ProjectListResponseBody> response) {
+                if (response.isSuccessful()){
+                    Project[] temp = response.body().getData();
+                    for (Project e : temp){
+                        projectList.add(e);
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProjectListResponseBody> call, Throwable t) {
+
+            }
+        });
+
+
+
         return projectList;
     }
 }

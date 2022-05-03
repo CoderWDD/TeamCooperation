@@ -8,6 +8,10 @@
             name="item"
             type="com.example.cooperation.model.ItemAdd" />
 
+        <variable
+            name="EventHandler"
+            type="com.example.cooperation.databing.PageAddItemDataBinding" />
+
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -156,14 +160,10 @@
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
-                    <TextView
-                        android:id="@+id/recyclerview_todo_item_executor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/no236"
-                        android:text="@{item.executor}"
-                        android:textColor="@color/orange_brown_item"
-                        android:textSize="25sp" />
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_executor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -261,6 +261,7 @@
                     android:fontFamily="@font/no236"
                     android:stateListAnimator="@null"
                     android:text="@string/project_detail_add_item_to_project"
+                    android:onClick="@{(view)->EventHandler.onAddToProjectClick(view,item)}"
                     android:textColor="@color/orange_brown"
                     android:textSize="25sp"
                     app:backgroundTint="@color/button_login_background_3C"

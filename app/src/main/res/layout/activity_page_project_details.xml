@@ -138,18 +138,11 @@
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_project_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@null"
-                        android:fontFamily="@font/no236"
-                        android:maxLength="30"
-                        android:maxLines="1"
-                        android:text="@={projects.status}"
-                        android:textColor="@color/orange_brown"
-                        android:textSize="25sp" />
+                        android:entries="@array/status" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -174,7 +167,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/no236"
-                        android:text="@{projects.creator}"
+                        android:text="@{projects.author}"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
@@ -201,7 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/no236"
-                        android:text="@{projects.cooperatorsList}"
+                        android:text="@{projects.cooperatorsList.toString()}"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 

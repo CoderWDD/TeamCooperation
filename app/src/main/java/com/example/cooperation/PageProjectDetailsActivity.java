@@ -2,6 +2,8 @@ package com.example.cooperation;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -30,5 +32,12 @@ public class PageProjectDetailsActivity extends AppCompatActivity {
         String cooperators = bundle.getString("cooperators");
 
         activityPageProjectDetailsBinding.setProjects(project_item);
+
+        // 配置Status Spinner
+        Spinner spinnerStatus = findViewById(R.id.spinner_project_status);
+        String[] stringArray = getResources().getStringArray(R.array.status);
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<>(this, R.layout.status_spinner_text, stringArray);
+        adapterStatus.setDropDownViewResource(R.layout.status_spinner_text);
+        spinnerStatus.setAdapter(adapterStatus);
     }
 }

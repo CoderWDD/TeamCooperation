@@ -3,7 +3,6 @@ package com.example.cooperation.viewmodel;
 import com.example.cooperation.model.ItemAdd;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class RecyclerViewTodoViewModel {
@@ -17,7 +16,6 @@ public class RecyclerViewTodoViewModel {
         itemAdd.setAuthor("CoderWdd");
         itemAdd.setExecutor("吴某人");
         itemAdd.setDescription("没什么");
-        itemAdd.setItemTime(new Date());
         itemAdd.setStatus("Doing");
         itemAdd.setProjectId(22);
 
@@ -29,7 +27,6 @@ public class RecyclerViewTodoViewModel {
         itemAdd1.setAuthor("CoderWdd");
         itemAdd1.setExecutor("吴某人");
         itemAdd1.setDescription("没什么");
-        itemAdd1.setItemTime(new Date());
         itemAdd1.setStatus("Doing");
         itemAdd1.setProjectId(22);
 
