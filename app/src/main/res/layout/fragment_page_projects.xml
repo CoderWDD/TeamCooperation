@@ -33,6 +33,13 @@
                 android:textColor="@color/orange_brown"
                 android:textSize="30sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/orange_brown_hint" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_projects"
                 android:layout_width="match_parent"
