@@ -69,43 +69,5 @@ public class RecyclerViewProjectsViewModel {
 
             }
         });
-
-
-
-    }
-
-
-    public List<Project> getProjects(){
-        // TODO 网络请求，获取projects列表
-
-
-        MyRetrofit.InitInstance();
-        RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
-
-        Call<ProjectListResponseBody> projectListResponseBodyCall = retrofitRequestInterface.projectGetList(MyRetrofit.getToken());
-
-
-        projectListResponseBodyCall.enqueue(new Callback<ProjectListResponseBody>() {
-            @Override
-            public void onResponse(Call<ProjectListResponseBody> call, Response<ProjectListResponseBody> response) {
-                if (response.isSuccessful()){
-                    Project[] temp = response.body().getData();
-                    for (Project e : temp){
-                        projectList.add(e);
-                    }
-
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProjectListResponseBody> call, Throwable t) {
-
-            }
-        });
-
-
-
-        return projectList;
     }
 }

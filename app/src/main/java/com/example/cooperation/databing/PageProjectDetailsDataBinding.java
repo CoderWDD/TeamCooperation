@@ -37,7 +37,7 @@ public class PageProjectDetailsDataBinding {
     }
 
     public void onModifyClick(View view,Project project){
-        // TODO 网络请求，修改project
+        // 网络请求，修改project
 
         Spinner spinner = (Spinner)((Activity) context).findViewById(R.id.spinner_project_status);
         String selectedItem = (String)spinner.getSelectedItem();

@@ -48,7 +48,7 @@ public class PageAddProjectDataBinding {
     }
 
     public void onCreateProjectClicked(View view){
-        // TODO 网络请求，创建项目
+        // 网络请求，创建项目
 
         if (projectObservableField.get().getProjectName() == null){
             Toast.makeText(context,"Project Name Can't Be Empty!",Toast.LENGTH_SHORT).show();

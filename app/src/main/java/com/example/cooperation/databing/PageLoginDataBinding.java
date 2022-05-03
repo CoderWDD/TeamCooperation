@@ -74,7 +74,7 @@ public class PageLoginDataBinding {
                     MyRetrofit.setToken(token);
                     // TODO 登录成功后，将账号密码，token，进行本地保存
 
-                    // TODO 登录成功后，跳转到主页面
+                    // 登录成功后，跳转到主页面
                     Intent intent = new Intent(context, PageHomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     context.startActivity(intent);
