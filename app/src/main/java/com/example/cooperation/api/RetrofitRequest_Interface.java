@@ -46,7 +46,6 @@ public interface RetrofitRequest_Interface {
     @GET("project/get/{projectId}")
     Call<ResponseBody> projectGetOne(@Header("token") String token, @Path("projectId") int projectId);
 
-    // TODO 实现一个将data中的json数据转换为实体的工具类
     @GET("project/getList")
     Call<ProjectListResponseBody> projectGetList(@Header("token") String token);
 

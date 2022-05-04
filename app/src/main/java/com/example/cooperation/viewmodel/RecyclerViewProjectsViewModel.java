@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.cooperation.PageProjectDetailsActivity;
 import com.example.cooperation.R;
@@ -34,15 +35,18 @@ public class RecyclerViewProjectsViewModel {
     List<Project> projectList;
     private final Context context;
     private final FragmentPageProjectsBinding fragmentPageProjectsBinding;
+    private final SwipeRefreshLayout swipeRefreshLayout;
 
-    public RecyclerViewProjectsViewModel(FragmentPageProjectsBinding fragmentPageProjectsBinding, Context context) {
+    public RecyclerViewProjectsViewModel(FragmentPageProjectsBinding fragmentPageProjectsBinding, Context context,SwipeRefreshLayout swipeRefreshLayout) {
         this.fragmentPageProjectsBinding = fragmentPageProjectsBinding;
         this.context = context;
         projectList = new LinkedList<>();
+        this.swipeRefreshLayout = swipeRefreshLayout;
     }
 
     public void refreshRecyclerViewItems() {
-
+        // 防止刷新后旧数据还在
+        projectList.clear();
         MyRetrofit.InitInstance();
         RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
 
@@ -114,6 +118,10 @@ public class RecyclerViewProjectsViewModel {
                         }
                     });
 
+                    if (swipeRefreshLayout != null){
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+
                     fragmentPageProjectsBinding.recyclerviewProjects.setAdapter(recyclerViewAdapterForProjects);
 
                 }
@@ -121,6 +129,9 @@ public class RecyclerViewProjectsViewModel {
 
             @Override
             public void onFailure(@NonNull Call<ProjectListResponseBody> call, @NonNull Throwable t) {
+                if (swipeRefreshLayout != null) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                 Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
             }
         });

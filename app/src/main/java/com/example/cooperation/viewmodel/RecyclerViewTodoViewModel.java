@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.cooperation.ActivityPageTaskItemDetails;
 import com.example.cooperation.R;
@@ -34,14 +35,18 @@ public class RecyclerViewTodoViewModel {
     private final List<ItemAdd> itemList;
     private final Context context;
     private final FragmentPageItemToDoBinding fragmentPageItemToDoBinding;
+    private final SwipeRefreshLayout swipeRefreshLayout;
 
-    public RecyclerViewTodoViewModel(Context context, FragmentPageItemToDoBinding fragmentPageItemToDoBinding) {
+    public RecyclerViewTodoViewModel(Context context, FragmentPageItemToDoBinding fragmentPageItemToDoBinding, SwipeRefreshLayout swipeRefreshLayout) {
         this.context = context;
         this.fragmentPageItemToDoBinding = fragmentPageItemToDoBinding;
+        this.swipeRefreshLayout = swipeRefreshLayout;
         itemList = new LinkedList<>();
     }
 
     public void refreshRecyclerViewItems(){
+        // 防止刷新后旧数据还在
+        itemList.clear();
         MyRetrofit.InitInstance();
         RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
 
@@ -101,6 +106,9 @@ public class RecyclerViewTodoViewModel {
                         }
                     });
 
+                    if (swipeRefreshLayout != null) {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
                     fragmentPageItemToDoBinding.recyclerviewTodo.setAdapter(recyclerViewAdapterForTodo);
 
                 }
@@ -108,6 +116,9 @@ public class RecyclerViewTodoViewModel {
 
             @Override
             public void onFailure(@NonNull Call<ItemListResponseBody> call, @NonNull Throwable t) {
+                if (swipeRefreshLayout != null) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
                 Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
             }
         });
