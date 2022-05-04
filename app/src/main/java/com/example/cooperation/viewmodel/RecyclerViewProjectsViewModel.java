@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.cooperation.PageProjectDetailsActivity;
@@ -22,6 +23,7 @@ import com.example.cooperation.databing.click.ProjectItemClick;
 import com.example.cooperation.model.Project;
 import com.example.cooperation.model.ProjectListResponseBody;
 import com.example.cooperation.model.ResponseBody;
+import com.example.cooperation.utils.SelectListByStatusUtil;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -52,7 +54,6 @@ public class RecyclerViewProjectsViewModel {
 
         Call<ProjectListResponseBody> projectListResponseBodyCall = retrofitRequestInterface.projectGetList(MyRetrofit.getToken());
 
-
         projectListResponseBodyCall.enqueue(new Callback<ProjectListResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<ProjectListResponseBody> call, @NonNull Response<ProjectListResponseBody> response) {
@@ -60,7 +61,21 @@ public class RecyclerViewProjectsViewModel {
                     Project[] temp = response.body().getData();
                     projectList.addAll(Arrays.asList(temp));
 
-                    RecyclerViewAdapterForProjects recyclerViewAdapterForProjects = new RecyclerViewAdapterForProjects(projectList, new ProjectItemClick() {
+                    // 获取要显示的是哪种状态的project，并显示
+                    AppCompatCheckBox projectTodo = fragmentPageProjectsBinding.getRoot().findViewById(R.id.project_status_todo);
+
+                    AppCompatCheckBox projectDoing = fragmentPageProjectsBinding.getRoot().findViewById(R.id.project_status_doing);
+
+                    AppCompatCheckBox projectDone = fragmentPageProjectsBinding.getRoot().findViewById(R.id.project_status_done);
+                    List<Project> showList;
+                    if (projectTodo == null || projectDoing == null || projectDone == null){
+                        Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
+                        return;
+                    }else {
+                        showList = SelectListByStatusUtil.selectProjects(RecyclerViewProjectsViewModel.this.projectList, projectTodo.isChecked(), projectDoing.isChecked(), projectDone.isChecked());
+                    }
+
+                    RecyclerViewAdapterForProjects recyclerViewAdapterForProjects = new RecyclerViewAdapterForProjects(showList, new ProjectItemClick() {
                         @Override
                         public void onClicked(View view, Project project) {
                             Intent intent = new Intent(context, PageProjectDetailsActivity.class);
@@ -113,7 +128,6 @@ public class RecyclerViewProjectsViewModel {
                             // 参考：https://blog.csdn.net/xiayiye5/article/details/83080623
                             dialog.create();
                             dialog.show();
-                            dialog.getContext().setTheme(R.style.Theme_Cooperation);
                             return false;
                         }
                     });

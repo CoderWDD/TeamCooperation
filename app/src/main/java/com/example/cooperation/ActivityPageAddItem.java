@@ -36,7 +36,7 @@ public class ActivityPageAddItem extends AppCompatActivity {
         item.setAuthor(project.getAuthor());
         item.setProjectName(project.getProjectName());
         activityPageAddItemBinding.setItem(item);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         item.setItemTime(simpleDateFormat.format(new Date()));
 
         // 配置Status Spinner

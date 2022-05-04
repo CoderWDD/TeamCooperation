@@ -36,6 +36,8 @@ public class ActivityPageTaskItemDetails extends AppCompatActivity {
         ArrayAdapter<String> adapterStatus = new ArrayAdapter<>(this, R.layout.status_spinner_text, stringArray);
         adapterStatus.setDropDownViewResource(R.layout.status_spinner_text);
         spinnerStatus.setAdapter(adapterStatus);
-
+        // 设置默认的status为当前item的status
+        int position = adapterStatus.getPosition(task_item.getStatus());
+        spinnerStatus.setSelection(position);
     }
 }

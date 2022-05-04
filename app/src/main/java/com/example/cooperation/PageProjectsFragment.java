@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,50 +44,6 @@ public class PageProjectsFragment extends Fragment {
         fragmentPageProjectsBinding.recyclerviewProjects.setLayoutManager(new LinearLayoutManager(this.getContext()));
         fragmentPageProjectsBinding.recyclerviewProjects.setHasFixedSize(true);
 
-
-
-//        RecyclerViewAdapterForProjects recyclerViewAdapterForProjects = new RecyclerViewAdapterForProjects(new RecyclerViewProjectsViewModel().getProjects(), new ProjectItemClick() {
-//
-//
-//            @Override
-//            public void onClicked(View view, Project project) {
-//
-//                MyRetrofit.InitInstance();
-//
-//                RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
-//
-//                Call<ResponseBody> responseBodyCall = retrofitRequestInterface.projectGetCooperator(MyRetrofit.getToken(), project.getProjectId());
-//
-//                responseBodyCall.enqueue(new Callback<ResponseBody>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                        if (response.isSuccessful() && HttpStatus.OK.equals(response.body().getCode())){
-//                            String cooperators = response.body().getData();
-//                            Intent intent = new Intent(getContext(),PageProjectDetailsActivity.class);
-//                            Bundle bundle = new Bundle();
-//                            project.setCooperatorsList(cooperators);
-//                            bundle.putSerializable("project_item", project);
-//                            bundle.putString("cooperators",cooperators);
-//                            intent.putExtras(bundle);
-//                            getContext().startActivity(intent);
-//                        }else {
-//                            Toast.makeText(getContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
-//                            return;
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                        Toast.makeText(getContext(),"获取Cooperators失败！",Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//            }
-//        });
-
-
-
-//        fragmentPageProjectsBinding.recyclerviewProjects.setAdapter(recyclerViewAdapterForProjects);
-
         SwipeRefreshLayout swipeRefreshLayout = fragmentPageProjectsBinding.getRoot().findViewById(R.id.refresh_project_list);
 
         swipeRefreshLayout.setColorSchemeResources(R.color.orange_brown,R.color.orange_brown_item,R.color.orange_brown_hint);
@@ -94,14 +51,20 @@ public class PageProjectsFragment extends Fragment {
         RecyclerViewProjectsViewModel recyclerViewProjectsViewModel = new RecyclerViewProjectsViewModel(fragmentPageProjectsBinding,getContext(),swipeRefreshLayout);
         recyclerViewProjectsViewModel.refreshRecyclerViewItems();
 
+        // 实现动态显示，优化可考虑本地缓存，而不进行网络请求
+        AppCompatCheckBox projectTodo = fragmentPageProjectsBinding.getRoot().findViewById(R.id.project_status_todo);
 
+        AppCompatCheckBox projectDoing = fragmentPageProjectsBinding.getRoot().findViewById(R.id.project_status_doing);
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                recyclerViewProjectsViewModel.refreshRecyclerViewItems();
-            }
-        });
+        AppCompatCheckBox projectDone = fragmentPageProjectsBinding.getRoot().findViewById(R.id.project_status_done);
+
+        projectTodo.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewProjectsViewModel.refreshRecyclerViewItems());
+
+        projectDoing.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewProjectsViewModel.refreshRecyclerViewItems());
+
+        projectDone.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewProjectsViewModel.refreshRecyclerViewItems());
+
+        swipeRefreshLayout.setOnRefreshListener(() -> recyclerViewProjectsViewModel.refreshRecyclerViewItems());
 
         // Inflate the layout for this fragment
         return fragmentPageProjectsBinding.getRoot();

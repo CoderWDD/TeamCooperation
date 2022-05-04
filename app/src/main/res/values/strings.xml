@@ -76,4 +76,8 @@
     <string name="delete_message">Delete Or Not?</string>
     <string name="delete_positive_button">Yes</string>
     <string name="delete_negative_button">No</string>
+
+    <string name="status_todo">todo</string>
+    <string name="status_doing">doing</string>
+    <string name="status_done">done</string>
 </resources>

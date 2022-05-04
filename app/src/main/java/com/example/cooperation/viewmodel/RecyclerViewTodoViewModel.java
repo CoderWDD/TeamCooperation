@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.cooperation.ActivityPageTaskItemDetails;
@@ -22,6 +23,7 @@ import com.example.cooperation.databing.click.TaskItemClicked;
 import com.example.cooperation.model.ItemAdd;
 import com.example.cooperation.model.ItemListResponseBody;
 import com.example.cooperation.model.ResponseBody;
+import com.example.cooperation.utils.SelectListByStatusUtil;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -59,7 +61,21 @@ public class RecyclerViewTodoViewModel {
                     ItemAdd[] items = response.body().getData();
                     itemList.addAll(Arrays.asList(items));
 
-                    RecyclerViewAdapterForTodo recyclerViewAdapterForTodo = new RecyclerViewAdapterForTodo(itemList, new TaskItemClicked() {
+                    // 获取要显示的是哪种状态的item，并显示
+                    AppCompatCheckBox itemTodo = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_todo);
+
+                    AppCompatCheckBox itemDoing = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_doing);
+
+                    AppCompatCheckBox itemDone = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_done);
+                    List<ItemAdd> showList;
+                    if (itemTodo == null || itemDoing == null || itemDone == null){
+                        Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
+                        return;
+                    }else {
+                        showList = SelectListByStatusUtil.selectItems(itemList, itemTodo.isChecked(), itemDoing.isChecked(), itemDone.isChecked());
+                    }
+
+                    RecyclerViewAdapterForTodo recyclerViewAdapterForTodo = new RecyclerViewAdapterForTodo(showList, new TaskItemClicked() {
                         @Override
                         public void onClicked(View view, ItemAdd item) {
                             Intent intent = new Intent(context, ActivityPageTaskItemDetails.class);

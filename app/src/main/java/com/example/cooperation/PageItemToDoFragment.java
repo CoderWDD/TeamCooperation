@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,12 +35,20 @@ public class PageItemToDoFragment extends Fragment {
         RecyclerViewTodoViewModel recyclerViewTodoViewModel = new RecyclerViewTodoViewModel(getContext(),fragmentPageItemToDoBinding, swipeRefreshLayout);
         recyclerViewTodoViewModel.refreshRecyclerViewItems();
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                recyclerViewTodoViewModel.refreshRecyclerViewItems();
-            }
-        });
+        AppCompatCheckBox itemTodo = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_todo);
+
+        AppCompatCheckBox itemDoing = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_doing);
+
+        AppCompatCheckBox itemDone = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_done);
+
+        itemTodo.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
+
+        itemDoing.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
+
+        itemDone.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
+
+
+        swipeRefreshLayout.setOnRefreshListener(() -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
 
         return fragmentPageItemToDoBinding.getRoot();
     }
