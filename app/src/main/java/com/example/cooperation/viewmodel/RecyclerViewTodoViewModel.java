@@ -1,39 +1,115 @@
 package com.example.cooperation.viewmodel;
 
-import com.example.cooperation.model.ItemAdd;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+
+import com.example.cooperation.ActivityPageTaskItemDetails;
+import com.example.cooperation.R;
+import com.example.cooperation.api.MyRetrofit;
+import com.example.cooperation.api.RetrofitRequest_Interface;
+import com.example.cooperation.constant.HttpStatus;
+import com.example.cooperation.databinding.FragmentPageItemToDoBinding;
+import com.example.cooperation.databing.adapter.RecyclerViewAdapterForTodo;
+import com.example.cooperation.databing.click.TaskItemClicked;
+import com.example.cooperation.model.ItemAdd;
+import com.example.cooperation.model.ItemListResponseBody;
+import com.example.cooperation.model.ResponseBody;
+
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class RecyclerViewTodoViewModel {
-    public List<ItemAdd> getItems(){
-        List<ItemAdd> itemList = new ArrayList<>();
+    private final List<ItemAdd> itemList;
+    private final Context context;
+    private final FragmentPageItemToDoBinding fragmentPageItemToDoBinding;
 
-        // TODO 网络请求，获取items
-        ItemAdd itemAdd = new ItemAdd();
-        itemAdd.setItemId(10);
-        itemAdd.setItemName("item_01");
-        itemAdd.setAuthor("CoderWdd");
-        itemAdd.setExecutor("吴某人");
-        itemAdd.setDescription("没什么");
-        itemAdd.setStatus("Doing");
-        itemAdd.setProjectId(22);
+    public RecyclerViewTodoViewModel(Context context, FragmentPageItemToDoBinding fragmentPageItemToDoBinding) {
+        this.context = context;
+        this.fragmentPageItemToDoBinding = fragmentPageItemToDoBinding;
+        itemList = new LinkedList<>();
+    }
 
-        itemList.add(itemAdd);
+    public void refreshRecyclerViewItems(){
+        MyRetrofit.InitInstance();
+        RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
 
-        ItemAdd itemAdd1 = new ItemAdd();
-        itemAdd1.setItemId(10);
-        itemAdd1.setItemName("item_01");
-        itemAdd1.setAuthor("CoderWdd");
-        itemAdd1.setExecutor("吴某人");
-        itemAdd1.setDescription("没什么");
-        itemAdd1.setStatus("Doing");
-        itemAdd1.setProjectId(22);
+        Call<ItemListResponseBody> responseBodyCall = retrofitRequestInterface.itemGetCurrentItemList(MyRetrofit.getToken());
 
-        itemList.add(itemAdd);
-        itemList.add(itemAdd);
-        itemList.add(itemAdd);
+        responseBodyCall.enqueue(new Callback<ItemListResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ItemListResponseBody> call, @NonNull Response<ItemListResponseBody> response) {
+                if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
+                    ItemAdd[] items = response.body().getData();
+                    itemList.addAll(Arrays.asList(items));
 
-        return itemList;
+                    RecyclerViewAdapterForTodo recyclerViewAdapterForTodo = new RecyclerViewAdapterForTodo(itemList, new TaskItemClicked() {
+                        @Override
+                        public void onClicked(View view, ItemAdd item) {
+                            Intent intent = new Intent(context, ActivityPageTaskItemDetails.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("task_item",item);
+                            intent.putExtras(bundle);
+                            context.startActivity(intent);
+                        }
+
+                        @Override
+                        public boolean onLongClicked(View view,final ItemAdd itemAdd) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+                            dialog.setTitle(R.string.attention);
+                            dialog.setMessage(R.string.delete_message);
+                            dialog.setPositiveButton(R.string.delete_positive_button, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Call<ResponseBody> responseBodyCall1 = retrofitRequestInterface.itemDelete(MyRetrofit.getToken(), itemAdd.getItemId());
+                                    responseBodyCall1.enqueue(new Callback<ResponseBody>() {
+                                        @Override
+                                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                            if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
+                                                Toast.makeText(context,response.body().getData(),Toast.LENGTH_SHORT).show();
+                                            }else {
+                                                Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                            Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            });
+                            dialog.setNegativeButton(R.string.delete_negative_button, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
+                            dialog.create().show();
+                            return false;
+                        }
+                    });
+
+                    fragmentPageItemToDoBinding.recyclerviewTodo.setAdapter(recyclerViewAdapterForTodo);
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ItemListResponseBody> call, @NonNull Throwable t) {
+                Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -14,6 +14,7 @@ import com.example.cooperation.model.Project;
 import com.example.cooperation.model.ProjectCreate;
 import com.example.cooperation.model.ResponseBody;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -66,19 +67,25 @@ public class PageAddProjectDataBinding {
 
         projectCreate.setDescription(projectObservableField.get().getDescription());
 
-        projectCreate.setCreateTime(new Date());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        projectCreate.setCreateTime(simpleDateFormat.format(new Date()));
 
         Call<ResponseBody> responseBodyCall = retrofitRequestInterface.projectCreate(MyRetrofit.getToken(), projectCreate);
 
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful() && HttpStatus.OK.equals(response.body().getCode())){
+                if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
                     // 如果创建成功
                     Toast.makeText(context,"创建成功！",Toast.LENGTH_SHORT).show();
                     ((Activity)context).finish();
                 }else {
-                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                    if (response.body() == null){
+                        Toast.makeText(context,"出错啦！",Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

@@ -1,6 +1,7 @@
 package com.example.cooperation.api;
 
 import com.example.cooperation.model.ItemAdd;
+import com.example.cooperation.model.ItemListResponseBody;
 import com.example.cooperation.model.ProjectCreate;
 import com.example.cooperation.model.ProjectListResponseBody;
 import com.example.cooperation.model.ProjectModifyInfo;
@@ -74,5 +75,5 @@ public interface RetrofitRequest_Interface {
     Call<ResponseBody> itemGetItemInfo(@Header("token") String token,@Path("itemId") int itemId);
 
     @GET("item/getCurrentItemList")
-    Call<ResponseBody> itemGetCurrentItemList(@Header("token") String token);
+    Call<ItemListResponseBody> itemGetCurrentItemList(@Header("token") String token);
 }

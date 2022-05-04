@@ -71,4 +71,9 @@
     <string name="profile_setting">Setting</string>
     <string name="profile_modify_info">Modify Info</string>
     <string name="profile_logout">Logout</string>
+
+    <string name="attention">Attention: </string>
+    <string name="delete_message">Delete Or Not?</string>
+    <string name="delete_positive_button">Yes</string>
+    <string name="delete_negative_button">No</string>
 </resources>

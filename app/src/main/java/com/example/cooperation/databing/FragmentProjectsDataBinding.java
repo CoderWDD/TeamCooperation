@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.cooperation.ActivityFloatingActionButtonChoose;
 
@@ -18,7 +17,6 @@ public class FragmentProjectsDataBinding{
 
     public void onFloatingActionButtonClicked(View view){
         // 弹出一个框，让选择添加projects还是加入别人的projects
-        Toast.makeText(context,"asdasdasd",Toast.LENGTH_SHORT).show();
 
 //        Intent intent = new Intent(context, PageProjectDetailsActivity.class);
 //

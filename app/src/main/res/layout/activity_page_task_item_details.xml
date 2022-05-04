@@ -7,6 +7,10 @@
         <variable
             name="itemDetails"
             type="com.example.cooperation.model.ItemAdd" />
+
+        <variable
+            name="EventHandler"
+            type="com.example.cooperation.databing.PageItemDetailsDataBinding" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -124,18 +128,11 @@
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_item_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@null"
-                        android:fontFamily="@font/no236"
-                        android:maxLength="30"
-                        android:maxLines="1"
-                        android:text="@={itemDetails.status}"
-                        android:textColor="@color/orange_brown"
-                        android:textSize="25sp" />
+                        android:entries="@array/status" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -234,6 +231,7 @@
                     android:fontFamily="@font/no236"
                     android:stateListAnimator="@null"
                     android:text="@string/project_modify"
+                    android:onClick="@{(view)->EventHandler.onModifyItemClick(view,itemDetails)}"
                     android:textColor="@color/orange_brown"
                     android:textSize="25sp"
                     app:backgroundTint="@color/button_login_background_3C"

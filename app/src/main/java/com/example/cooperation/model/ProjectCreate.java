@@ -1,11 +1,9 @@
 package com.example.cooperation.model;
 
-import java.util.Date;
-
 public class ProjectCreate {
     private String projectName;
     private String description;
-    private Date createTime;
+    private String createTime;
 
     public String getProjectName() {
         return projectName;
@@ -23,11 +21,11 @@ public class ProjectCreate {
         this.description = description;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }

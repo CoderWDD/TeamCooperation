@@ -40,9 +40,9 @@ public class RecyclerViewAdapterForProjects extends RecyclerView.Adapter<Recycle
         return projectList.size();
     }
 
-    class MyRecyclerViewHolder extends RecyclerView.ViewHolder{
-        private RecyclerviewProjectsLayoutBinding recyclerviewProjectsLayoutBinding;
 
+    class MyRecyclerViewHolder extends RecyclerView.ViewHolder {
+        RecyclerviewProjectsLayoutBinding recyclerviewProjectsLayoutBinding;
         public MyRecyclerViewHolder(@NonNull RecyclerviewProjectsLayoutBinding itemView) {
             super(itemView.getRoot());
             recyclerviewProjectsLayoutBinding = itemView;
@@ -54,7 +54,7 @@ public class RecyclerViewAdapterForProjects extends RecyclerView.Adapter<Recycle
             recyclerviewProjectsLayoutBinding.executePendingBindings();
             recyclerviewProjectsLayoutBinding.setOnProjectItemClicked(projectItemClick);
         }
-
-
     }
+
+
 }
