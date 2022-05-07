@@ -38,10 +38,10 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/orange_brown_hint"/>
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/orange_brown_hint" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
 
@@ -97,10 +97,10 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.3dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:background="@color/orange_brown_hint"/>
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="7dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/orange_brown_hint" />
 
             <com.google.android.material.card.MaterialCardView
 
@@ -124,6 +124,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/profile_modify_info"
                         android:background="@drawable/button_profile_background"
+                        android:onClick="@{ProfileEventHandler.onModifyInfoClicked}"
                         android:fontFamily="@font/no236"
                         android:textColor="@color/orange_brown"
                         android:layout_marginTop="12dp"

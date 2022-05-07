@@ -13,6 +13,13 @@
         android:theme="@style/Theme.Cooperation"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ActivityPageChangeUserPassword"
+            android:exported="false"
+            android:theme="@style/Transparent"/>
+        <activity
+            android:name=".ActivityPageModifyUserInfo"
+            android:exported="false" />
+        <activity
             android:name=".ActivityPageAddItem"
             android:exported="false" />
         <activity
@@ -25,7 +32,7 @@
         <activity
             android:name=".ActivityPageAddProject"
             android:exported="false"
-            android:theme="@style/Transparent"/>
+            android:theme="@style/Transparent" />
         <activity
             android:name=".ActivityFloatingActionButtonChoose"
             android:exported="false"

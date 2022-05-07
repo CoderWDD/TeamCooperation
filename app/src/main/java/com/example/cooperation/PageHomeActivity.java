@@ -20,18 +20,8 @@ public class PageHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_page_home);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
         NavController navController = navHostFragment.getNavController();
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
-
-        getSupportFragmentManager();
-
-//        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-//
-//        Toolbar toolbar = new Toolbar(this);
-//        this.setSupportActionBar(toolbar);
-//
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).setOpenableLayout(drawerLayout).build();
-//
-//        NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
 
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
 

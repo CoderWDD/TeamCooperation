@@ -7,6 +7,7 @@ import com.example.cooperation.model.ProjectListResponseBody;
 import com.example.cooperation.model.ProjectModifyInfo;
 import com.example.cooperation.model.ResponseBody;
 import com.example.cooperation.model.User;
+import com.example.cooperation.model.UserInfoResponseBody;
 import com.example.cooperation.model.UserLogin;
 
 import retrofit2.Call;
@@ -31,8 +32,14 @@ public interface RetrofitRequest_Interface {
     @POST("user/modify")
     Call<ResponseBody> userModify(@Header("token") String token,@Body User user);
 
+    @POST("user/password/{password}")
+    Call<ResponseBody> userModifyPassword(@Header("token") String token,@Path("password") String password);
+
     @GET("user/get/{username}")
-    Call<ResponseBody> userGet(@Header("token") String token, @Path("username") String username);
+    Call<UserInfoResponseBody> userGetByUsername(@Header("token") String token, @Path("username") String username);
+
+    @GET("user/get/current")
+    Call<UserInfoResponseBody> userGetCurrent(@Header("token") String token);
 
     @POST("project/create")
     Call<ResponseBody> projectCreate(@Header("token") String token, @Body ProjectCreate projectCreate);

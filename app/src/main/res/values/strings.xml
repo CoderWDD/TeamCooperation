@@ -71,6 +71,18 @@
     <string name="profile_setting">Setting</string>
     <string name="profile_modify_info">Modify Info</string>
     <string name="profile_logout">Logout</string>
+    <string name="profile_modify_user_info">Modify Info</string>
+    <string name="user_nickname">Nickname: </string>
+    <string name="user_firstname">Firstname: </string>
+    <string name="user_lastname">Lastname: </string>
+    <string name="user_phone_number">Phone: </string>
+    <string name="user_department">Department: </string>
+    <string name="user_description">Description: </string>
+    <string name="user_sex">Sex: </string>
+    <string name="user_change_password">Change Password</string>
+    <string name="user_change_password_confirm">Confirm Change</string>
+    <string name="user_change_password_new">New Password: </string>
+
 
     <string name="attention">Attention: </string>
     <string name="delete_message">Delete Or Not?</string>
@@ -80,4 +92,6 @@
     <string name="status_todo">todo</string>
     <string name="status_doing">doing</string>
     <string name="status_done">done</string>
+
+
 </resources>

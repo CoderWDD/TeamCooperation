@@ -14,8 +14,6 @@ import com.example.cooperation.model.ResponseBody;
 import com.example.cooperation.model.User;
 import com.example.cooperation.utils.check.input.UserSignUpCheckUtil;
 
-import java.util.Date;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -119,19 +117,19 @@ public class PageSignUpDataBinding {
         observableField.get().setPassword(password);
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return observableField.get().getCreateTime();
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         observableField.get().setCreateTime(createTime);
     }
 
-    public int getSex() {
+    public String getSex() {
         return observableField.get().getSex();
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         observableField.get().setSex(sex);
     }
 

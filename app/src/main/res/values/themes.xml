@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Cooperation" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="Theme.Cooperation" parent="Theme.MaterialComponents.Light.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/orange_brown</item>
         <item name="colorPrimaryVariant">@color/orange_brown</item>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="EventHandler"
+            type="com.example.cooperation.databing.ActivityPageUserInfoDataBinding" />
+
+        <variable
+            name="UserInfo"
+            type="com.example.cooperation.model.User" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ActivityPageModifyUserInfo">
+
+        <TextView
+            android:id="@+id/useless_item_details_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/no236"
+            android:gravity="center_horizontal"
+            android:text="@string/profile_modify_info"
+            android:textColor="@color/orange_brown"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="7dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/orange_brown_hint"
+            app:layout_constraintTop_toBottomOf="@id/useless_item_details_table" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="25dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/useless_item_details_table">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/no236"
+                        android:text="@string/user_nickname"
+                        android:textColor="@color/orange_brown_item"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/no236"
+                        android:maxLength="10"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={UserInfo.nickName}"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/no236"
+                        android:text="@string/user_firstname"
+                        android:textColor="@color/orange_brown_item"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/no236"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:text="@={UserInfo.firstName}"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/no236"
+                        android:text="@string/user_lastname"
+                        android:textColor="@color/orange_brown_item"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/no236"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:text="@={UserInfo.lastName}"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/no236"
+                        android:text="@string/user_phone_number"
+                        android:textColor="@color/orange_brown_item"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/no236"
+                        android:maxLength="11"
+                        android:maxLines="1"
+                        android:text="@={UserInfo.phone}"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/no236"
+                        android:text="@string/user_department"
+                        android:textColor="@color/orange_brown_item"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/no236"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="@={UserInfo.department}"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/no236"
+                        android:text="@string/user_description"
+                        android:textColor="@color/orange_brown_item"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:fontFamily="@font/no236"
+                        android:maxLength="60"
+                        android:maxLines="1"
+                        android:text="@={UserInfo.description}"
+                        android:textColor="@color/orange_brown"
+                        android:textSize="25sp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/no236"
+                    android:stateListAnimator="@null"
+                    android:text="@string/project_modify"
+                    android:onClick="@{(view)->EventHandler.onModifyClick(view,UserInfo)}"
+                    android:textColor="@color/orange_brown"
+                    android:textSize="25sp"
+                    app:backgroundTint="@color/button_login_background_3C"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/no236"
+                    android:stateListAnimator="@null"
+                    android:onClick="@{EventHandler.onChangePasswordClick}"
+                    android:text="@string/user_change_password"
+                    android:textColor="@color/orange_brown"
+                    android:textSize="25sp"
+                    app:backgroundTint="@color/button_login_background_3C"
+                    app:cornerRadius="10dp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

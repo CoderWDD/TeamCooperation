@@ -1,44 +1,36 @@
 package com.example.cooperation.databing;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import androidx.databinding.ObservableField;
 
+import com.example.cooperation.ActivityPageModifyUserInfo;
+import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.model.User;
-
-import java.util.Date;
 
 public class FragmentViewProfileDataBinding {
     private Context context;
+    User user;
     private ObservableField<User> observableField;
 
     public FragmentViewProfileDataBinding(Context context) {
         this.context = context;
-        User user = new User();
         observableField = new ObservableField<>();
-        user.setAvatar(null);
-        user.setDescription("user description");
-        user.setUserName("username");
-        user.setPassword("");
-        user.setSex(1);
-        user.setPhone("110");
-        user.setNickName("nickname");
-        user.setCreateTime(new Date());
-        observableField.set(user);
+        user = MyRetrofit.getUser();
+        observableField.set(this.user);
     }
 
     public void onAvatarButtonClicked(View view){
         // TODO 切换头像
     }
 
-    public byte[] getAvatar(){
-        return observableField.get().getAvatar();
+    public void onModifyInfoClicked(View view){
+        Intent intent = new Intent(context, ActivityPageModifyUserInfo.class);
+        context.startActivity(intent);
     }
 
-    public void setAvatar(byte[] avatar){
-        observableField.get().setAvatar(avatar);
-    }
 
     public String getDescription(){
         return observableField.get().getDescription();
@@ -64,11 +56,11 @@ public class FragmentViewProfileDataBinding {
         observableField.get().setPassword(password);
     }
 
-    public int getSex(){
+    public String getSex(){
         return observableField.get().getSex();
     }
 
-    public void setSex(int sex){
+    public void setSex(String sex){
         observableField.get().setSex(sex);
     }
 
@@ -80,11 +72,11 @@ public class FragmentViewProfileDataBinding {
         observableField.get().setPhone(phone);
     }
 
-    public Date getCreateTime(){
+    public String getCreateTime(){
         return observableField.get().getCreateTime();
     }
 
-    public void setCreateTime(Date date){
+    public void setCreateTime(String date){
         observableField.get().setCreateTime(date);
     }
 

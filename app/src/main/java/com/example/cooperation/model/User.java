@@ -1,16 +1,5 @@
 package com.example.cooperation.model;
 
-import androidx.annotation.Nullable;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Date;
-
 public class User {
     private String nickName;
     private String firstName;
@@ -19,10 +8,11 @@ public class User {
     private String phone;
     private String userName;
     private String password;
-    private Date createTime;
-    private int sex;
+    private String createTime;
+    private String sex;
     private String description;
     private byte[] avatar;
+
 
     public String getNickName() {
         return nickName;
@@ -80,19 +70,19 @@ public class User {
         this.password = password;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
