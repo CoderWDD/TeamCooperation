@@ -39,9 +39,7 @@
             android:theme="@style/Transparent" />
         <activity
             android:name=".PageProjectDetailsActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".PageHomeActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
         <activity
             android:name=".SignUpPageActivity"
             android:exported="false" />
@@ -49,13 +47,19 @@
             android:name=".PageHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginPageActivity"
+            android:name=".SplashPageActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".LoginPageActivity"
+            android:exported="false">
         </activity>
     </application>
 

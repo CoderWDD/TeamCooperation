@@ -2,12 +2,15 @@ package com.example.cooperation.databing;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 
 import androidx.databinding.ObservableField;
 
 import com.example.cooperation.ActivityPageModifyUserInfo;
+import com.example.cooperation.LoginPageActivity;
 import com.example.cooperation.api.MyRetrofit;
+import com.example.cooperation.constant.SharedPreferencesConstant;
 import com.example.cooperation.model.User;
 
 public class FragmentViewProfileDataBinding {
@@ -28,6 +31,30 @@ public class FragmentViewProfileDataBinding {
 
     public void onModifyInfoClicked(View view){
         Intent intent = new Intent(context, ActivityPageModifyUserInfo.class);
+        context.startActivity(intent);
+    }
+
+    public void onLogoutClicked(View view){
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SharedPreferencesConstant.SP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+
+        edit.remove(SharedPreferencesConstant.USERNAME);
+        edit.remove(SharedPreferencesConstant.PASSWORD);
+        edit.remove(SharedPreferencesConstant.NICKNAME);
+        edit.remove(SharedPreferencesConstant.FIRSTNAME);
+        edit.remove(SharedPreferencesConstant.LASTNAME);
+        edit.remove(SharedPreferencesConstant.PHONE);
+        edit.remove(SharedPreferencesConstant.DEPARTMENT);
+        edit.remove(SharedPreferencesConstant.DESCRIPTION);
+        edit.remove(SharedPreferencesConstant.CREATE_TIME);
+        edit.remove(SharedPreferencesConstant.TOKEN);
+
+        edit.commit();
+
+
+        Intent intent = new Intent(context, LoginPageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
 

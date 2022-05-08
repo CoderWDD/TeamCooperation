@@ -2,6 +2,7 @@ package com.example.cooperation.databing;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,10 +12,12 @@ import androidx.databinding.ObservableField;
 import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.api.RetrofitRequest_Interface;
 import com.example.cooperation.constant.HttpStatus;
+import com.example.cooperation.constant.SharedPreferencesConstant;
 import com.example.cooperation.model.ResponseBody;
 import com.example.cooperation.model.User;
 import com.example.cooperation.model.UserLogin;
 import com.example.cooperation.utils.DecodeJsonFromData;
+import com.example.cooperation.utils.check.input.UserPasswordCheckUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +33,12 @@ public class ActivityPageChangePasswordDataBinding {
     }
 
     public void onChangePasswordClick(View view){
-        // TODO 先检验密码有效性，再进行网络请求
+        // 先检验密码有效性，再进行网络请求
+
+        if (!UserPasswordCheckUtil.check(context, observableField.get())){
+            return;
+        }
+
         MyRetrofit.InitInstance();
         RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();
 
@@ -40,6 +48,16 @@ public class ActivityPageChangePasswordDataBinding {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+
+                // 将新的密码更新到本地保存
+                SharedPreferences sharedPreferences = context.getSharedPreferences(SharedPreferencesConstant.SP_NAME, Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+
+                edit.putString(SharedPreferencesConstant.PASSWORD,getPassword());
+
+                edit.apply();
+
                 // 重新登录，更新token
 
                 MyRetrofit.InitInstance();
@@ -59,7 +77,16 @@ public class ActivityPageChangePasswordDataBinding {
                             // 如果登录成功，就将token存入全局
                             String token = DecodeJsonFromData.GetToken("{" + response.body().getData() + "}").getToken();
                             MyRetrofit.setToken(token);
-                            // TODO 更新本地token
+                            // 更新本地token
+
+                            SharedPreferences sharedPreferences = context.getSharedPreferences(SharedPreferencesConstant.SP_NAME, Context.MODE_PRIVATE);
+
+                            SharedPreferences.Editor edit = sharedPreferences.edit();
+
+                            edit.putString(SharedPreferencesConstant.TOKEN,token);
+
+                            edit.apply();
+
                             ((Activity)context).finish();
                         }
                     }

@@ -3,6 +3,7 @@ package com.example.cooperation.databing;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.example.cooperation.SignUpPageActivity;
 import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.api.RetrofitRequest_Interface;
 import com.example.cooperation.constant.HttpStatus;
+import com.example.cooperation.constant.SharedPreferencesConstant;
 import com.example.cooperation.model.ResponseBody;
 import com.example.cooperation.model.User;
 import com.example.cooperation.model.UserInfoResponseBody;
@@ -89,6 +91,32 @@ public class PageLoginDataBinding {
                                 MyRetrofit.setUser(user);
 
                                 // TODO 登录成功后，将账号密码，token，进行本地保存
+
+                                SharedPreferences sharedPreferences = context.getSharedPreferences(SharedPreferencesConstant.SP_NAME, Context.MODE_PRIVATE);
+
+                                SharedPreferences.Editor edit = sharedPreferences.edit();
+
+                                edit.putString(SharedPreferencesConstant.USERNAME,user.getUserName());
+
+                                edit.putString(SharedPreferencesConstant.PASSWORD,getPassword());
+
+                                edit.putString(SharedPreferencesConstant.NICKNAME,user.getNickName());
+
+                                edit.putString(SharedPreferencesConstant.FIRSTNAME,user.getFirstName());
+
+                                edit.putString(SharedPreferencesConstant.LASTNAME,user.getLastName());
+
+                                edit.putString(SharedPreferencesConstant.PHONE,user.getPhone());
+
+                                edit.putString(SharedPreferencesConstant.DEPARTMENT,user.getDepartment());
+
+                                edit.putString(SharedPreferencesConstant.DESCRIPTION,user.getDescription());
+
+                                edit.putString(SharedPreferencesConstant.CREATE_TIME,user.getCreateTime());
+
+                                edit.putString(SharedPreferencesConstant.TOKEN,MyRetrofit.getToken());
+
+                                edit.apply();
 
                                 // 登录成功后，跳转到主页面
                                 Intent intent = new Intent(context, PageHomeActivity.class);
