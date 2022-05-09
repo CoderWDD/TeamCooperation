@@ -90,7 +90,7 @@ public class PageLoginDataBinding {
                                 User user = response.body().getData();
                                 MyRetrofit.setUser(user);
 
-                                // TODO 登录成功后，将账号密码，token，进行本地保存
+                                // 登录成功后，将账号密码，token，进行本地保存
 
                                 SharedPreferences sharedPreferences = context.getSharedPreferences(SharedPreferencesConstant.SP_NAME, Context.MODE_PRIVATE);
 

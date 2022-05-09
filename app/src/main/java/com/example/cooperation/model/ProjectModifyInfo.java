@@ -9,6 +9,8 @@ public class ProjectModifyInfo {
 
     private String description;
 
+    private int priority;
+
     public String getStatus() {
         return status;
     }
@@ -39,5 +41,13 @@ public class ProjectModifyInfo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

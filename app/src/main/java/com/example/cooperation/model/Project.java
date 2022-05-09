@@ -18,6 +18,8 @@ public class Project implements Serializable {
 
     private String author;
 
+    private int priority;
+
     private List<String> cooperatorsList;
 
     public List<String> getCooperatorsList() {
@@ -82,5 +84,13 @@ public class Project implements Serializable {
 
     public void setAuthor(String creator) {
         this.author = creator;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

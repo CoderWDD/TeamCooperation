@@ -1,6 +1,7 @@
 package com.example.cooperation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 import com.example.cooperation.databinding.ActivityPageProjectDetailsBinding;
 import com.example.cooperation.databing.PageProjectDetailsDataBinding;
 import com.example.cooperation.model.Project;
+import com.example.cooperation.utils.SpinnerPriorityUtil;
 
 public class PageProjectDetailsActivity extends AppCompatActivity {
     @Override
@@ -43,5 +45,20 @@ public class PageProjectDetailsActivity extends AppCompatActivity {
         // 设置默认的status为当前item的status
         int position = adapterStatus.getPosition(project_item.getStatus());
         spinnerStatus.setSelection(position);
+
+        // 配置Priority Spinner
+        Spinner spinnerItemPriority = findViewById(R.id.spinner_project_details_priority);
+        String[] priorityArray = getResources().getStringArray(R.array.priority);
+        ArrayAdapter<String> adapterPriority = new ArrayAdapter<>(this, R.layout.status_spinner_text, priorityArray);
+        adapterPriority.setDropDownViewResource(R.layout.status_spinner_text);
+        spinnerItemPriority.setAdapter(adapterPriority);
+
+
+
+        // 设置默认的status为当前item的status
+        String selectPriorityItem = SpinnerPriorityUtil.SelectIndexToItem(project_item.getPriority());
+        int positionPriority = adapterPriority.getPosition(selectPriorityItem);
+
+        spinnerItemPriority.setSelection(positionPriority);
     }
 }

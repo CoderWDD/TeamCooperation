@@ -93,5 +93,7 @@
     <string name="status_doing">doing</string>
     <string name="status_done">done</string>
 
+    <string name="priority">priority: </string>
+
 
 </resources>

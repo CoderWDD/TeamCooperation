@@ -48,6 +48,14 @@ public class PageAddProjectDataBinding {
         this.projectObservableField.get().setDescription(description);
     }
 
+    public void setPriority(int priority){
+        this.projectObservableField.get().setPriority(priority);
+    }
+
+    public int getPriority(){
+        return this.projectObservableField.get().getPriority();
+    }
+
     public void onCreateProjectClicked(View view){
         // 网络请求，创建项目
 
@@ -66,6 +74,8 @@ public class PageAddProjectDataBinding {
         projectCreate.setProjectName(projectObservableField.get().getProjectName());
 
         projectCreate.setDescription(projectObservableField.get().getDescription());
+
+        projectCreate.setPriority(projectObservableField.get().getPriority() + 1);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

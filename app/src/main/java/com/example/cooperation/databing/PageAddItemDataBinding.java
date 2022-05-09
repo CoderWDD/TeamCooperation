@@ -12,6 +12,7 @@ import com.example.cooperation.api.RetrofitRequest_Interface;
 import com.example.cooperation.constant.HttpStatus;
 import com.example.cooperation.model.ItemAdd;
 import com.example.cooperation.model.ResponseBody;
+import com.example.cooperation.utils.SpinnerPriorityUtil;
 import com.example.cooperation.utils.check.input.AddItemCheckUtil;
 
 import retrofit2.Call;
@@ -33,10 +34,16 @@ public class PageAddItemDataBinding {
 
         Spinner spinnerStatus = (Spinner)((Activity) context).findViewById(R.id.spinner_status);
         Spinner spinnerExecutor = (Spinner)((Activity) context).findViewById(R.id.spinner_executor);
+        Spinner spinnerPriority = ((Activity) context).findViewById(R.id.spinner_item_add_priority);
+
+        int spinnerPriorityIndex = SpinnerPriorityUtil.SelectItemToIndex((String) spinnerPriority.getSelectedItem());
+
         String status = ((String)spinnerStatus.getSelectedItem());
         String executor = ((String)spinnerExecutor.getSelectedItem());
+
         item.setStatus(status);
         item.setExecutor(executor);
+        item.setPriority(spinnerPriorityIndex);
 
         MyRetrofit.InitInstance();
         RetrofitRequest_Interface retrofitRequestInterface = MyRetrofit.getRetrofitRequestInterface();

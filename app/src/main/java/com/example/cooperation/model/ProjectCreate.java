@@ -4,6 +4,7 @@ public class ProjectCreate {
     private String projectName;
     private String description;
     private String createTime;
+    private int priority;
 
     public String getProjectName() {
         return projectName;
@@ -27,5 +28,13 @@ public class ProjectCreate {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

@@ -41,10 +41,17 @@ public class ActivityPageAddItem extends AppCompatActivity {
 
         // 配置Status Spinner
         Spinner spinnerStatus = findViewById(R.id.spinner_status);
-        String[] stringArray = getResources().getStringArray(R.array.status);
-        ArrayAdapter<String> adapterStatus = new ArrayAdapter<>(this, R.layout.status_spinner_text, stringArray);
+        String[] statusArray = getResources().getStringArray(R.array.status);
+        ArrayAdapter<String> adapterStatus = new ArrayAdapter<>(this, R.layout.status_spinner_text, statusArray);
         adapterStatus.setDropDownViewResource(R.layout.status_spinner_text);
         spinnerStatus.setAdapter(adapterStatus);
+
+        // 配置Priority Spinner
+        Spinner spinnerItemPriority = findViewById(R.id.spinner_item_add_priority);
+        String[] priorityArray = getResources().getStringArray(R.array.priority);
+        ArrayAdapter<String> adapterPriority = new ArrayAdapter<>(this, R.layout.status_spinner_text, priorityArray);
+        adapterPriority.setDropDownViewResource(R.layout.status_spinner_text);
+        spinnerItemPriority.setAdapter(adapterPriority);
 
         // 配置Executor Spinner
         Spinner spinnerCooperators = findViewById(R.id.spinner_executor);

@@ -12,6 +12,7 @@ public class ItemAdd implements Serializable {
     private String description;
     private String status;
     private String projectName;
+    private int priority;
 
     public int getItemId() {
         return itemId;
@@ -83,5 +84,13 @@ public class ItemAdd implements Serializable {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }
