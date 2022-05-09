@@ -33,12 +33,16 @@ public class RecyclerViewAdapterForProjects extends RecyclerView.Adapter<Recycle
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerViewHolder holder, int position) {
         holder.bindViewWithProject(holder.recyclerviewProjectsLayoutBinding, projectList.get(position));
+
     }
+
 
     @Override
     public int getItemCount() {
         return projectList.size();
     }
+
+
 
 
     class MyRecyclerViewHolder extends RecyclerView.ViewHolder {

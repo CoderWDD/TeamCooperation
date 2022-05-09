@@ -13,6 +13,7 @@
         <variable
             name="onProjectItemClicked"
             type="com.example.cooperation.databing.click.ProjectItemClick" />
+
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -28,8 +29,7 @@
             android:onClick="@{(view)->onProjectItemClicked.onClicked(view,projects)}"
             android:onLongClick="@{(view)->onProjectItemClicked.onLongClicked(view,projects)}"
             android:layout_marginVertical="15dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp">
+            app:cardCornerRadius="10dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
@@ -194,6 +194,16 @@
                         android:textColor="@color/orange_brown_item"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <RatingBar
+                    android:id="@+id/ratingbar_project_priority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:numStars="4"
+                    android:shadowColor="@color/priority_one"
+                    />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
