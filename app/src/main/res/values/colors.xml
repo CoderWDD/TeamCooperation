@@ -23,8 +23,8 @@
     <color name="button_sign_up_background">#1C786048</color>
     <color name="navigation_bottom_item_uncheck">#46464646</color>
 
-    <color name="priority_one">#78D87848</color>
-    <color name="priority_two">#FFD87848</color>
-    <color name="priority_third">#FFD87848</color>
-    <color name="priority_four">#FFD87848</color>
+    <color name="priority_one">#BED87848</color>
+    <color name="priority_two">#96D87848</color>
+    <color name="priority_three">#6ED87848</color>
+    <color name="priority_four">#46D87848</color>
 </resources>

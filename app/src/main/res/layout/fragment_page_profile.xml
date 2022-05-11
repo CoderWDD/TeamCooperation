@@ -130,15 +130,6 @@
                         android:layout_marginTop="12dp"
                         android:textSize="25sp"/>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/profile_setting"
-                        android:background="@drawable/button_profile_background"
-                        android:fontFamily="@font/no236"
-                        android:layout_marginTop="15dp"
-                        android:textColor="@color/orange_brown"
-                        android:textSize="25sp"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="match_parent"

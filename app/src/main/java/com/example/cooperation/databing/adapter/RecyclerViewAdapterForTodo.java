@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cooperation.R;
+import com.example.cooperation.constant.PriorityConstant;
 import com.example.cooperation.databinding.RecyclerviewItemTodoLayoutBinding;
 import com.example.cooperation.databing.click.TaskItemClicked;
 import com.example.cooperation.model.ItemAdd;
@@ -54,6 +55,29 @@ public class RecyclerViewAdapterForTodo extends RecyclerView.Adapter<RecyclerVie
             recyclerviewItemTodoLayoutBinding.setTaskItem(item);
             recyclerviewItemTodoLayoutBinding.executePendingBindings();
             recyclerviewItemTodoLayoutBinding.setOnTaskItemClicked(taskItemClicked);
+
+            int priority = item.getPriority();
+
+            // 默认为：PriorityConstant.PRIORITY_ONE
+            int color;
+
+            switch (priority){
+                case PriorityConstant.PRIORITY_ONE:
+                    color = recyclerviewItemTodoLayoutBinding.getRoot().getResources().getColor(R.color.priority_one, recyclerviewItemTodoLayoutBinding.getRoot().getContext().getTheme());
+                    break;
+                case PriorityConstant.PRIORITY_TWO:
+                    color = recyclerviewItemTodoLayoutBinding.getRoot().getResources().getColor(R.color.priority_two, recyclerviewItemTodoLayoutBinding.getRoot().getContext().getTheme());
+                    break;
+                case PriorityConstant.PRIORITY_THREE:
+                    color = recyclerviewItemTodoLayoutBinding.getRoot().getResources().getColor(R.color.priority_three, recyclerviewItemTodoLayoutBinding.getRoot().getContext().getTheme());
+                    break;
+                case PriorityConstant.PRIORITY_FOUR:
+                    color = recyclerviewItemTodoLayoutBinding.getRoot().getResources().getColor(R.color.priority_four, recyclerviewItemTodoLayoutBinding.getRoot().getContext().getTheme());
+                    break;
+                default:
+                    color = PriorityConstant.PRIORITY_ONE;
+            }
+            recyclerviewItemTodoLayoutBinding.setPriorityColor(color);
         }
     }
 }

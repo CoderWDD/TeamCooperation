@@ -15,6 +15,10 @@
         <variable
             name="onTaskItemClicked"
             type="com.example.cooperation.databing.click.TaskItemClicked" />
+
+        <variable
+            name="priorityColor"
+            type="java.lang.Integer" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -37,10 +41,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/toolbar_item_priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@{priorityColor.intValue()}"/>
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar_item_priority"
                     app:layout_constraintStart_toStartOf="parent"
                     android:orientation="vertical">
 
