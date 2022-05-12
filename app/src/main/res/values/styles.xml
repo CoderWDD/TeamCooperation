@@ -25,4 +25,9 @@
 
     <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
 
+    <style name="circleImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

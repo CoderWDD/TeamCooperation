@@ -51,12 +51,20 @@
                 android:layout_marginLeft="30dp"
                 android:orientation="horizontal">
 
-                <ImageButton
+<!--                <ImageButton-->
+<!--                    android:layout_width="75dp"-->
+<!--                    android:layout_height="75dp"-->
+<!--                    android:background="@drawable/profile_avatar"-->
+<!--                    android:backgroundTint="@color/orange_brown_hint"-->
+<!--                    android:onClick="@{ProfileEventHandler.onAvatarButtonClicked}"/>-->
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profile_image_avatar"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/profile_avatar"
-                    android:backgroundTint="@color/orange_brown_hint"
-                    android:onClick="@{ProfileEventHandler.onAvatarButtonClicked}"/>
+                    android:onClick="@{ProfileEventHandler.onAvatarButtonClicked}"
+                    android:src="@mipmap/default_avatar"
+                    app:shapeAppearanceOverlay="@style/circleImageStyle" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_marginVertical="10dp"
@@ -130,6 +138,16 @@
                         android:layout_marginTop="12dp"
                         android:textSize="25sp"/>
 
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Test Avatar"
+                        android:background="@drawable/button_profile_background"
+                        android:fontFamily="@font/no236"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/orange_brown"
+                        android:onClick="@{ProfileEventHandler.onTestAvatarClicked}"
+                        android:textSize="25sp"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="match_parent"
