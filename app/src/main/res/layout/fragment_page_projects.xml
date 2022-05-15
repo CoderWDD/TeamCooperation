@@ -110,9 +110,8 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:clickable="true"
             android:contentDescription="@string/projects_button_plus"
             android:onClick="@{ProjectsEventHandler::onFloatingActionButtonClicked}"
             android:src="@drawable/floating_action_button_background"
