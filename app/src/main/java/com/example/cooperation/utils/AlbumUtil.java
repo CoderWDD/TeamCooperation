@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+
+import java.nio.ByteBuffer;
 
 public class AlbumUtil {
     private Context context;
@@ -44,7 +48,7 @@ public class AlbumUtil {
             } else if (isDownloadsDocument(uri)) {
                 final String id = DocumentsContract.getDocumentId(uri);
                 final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),
-                        Long.valueOf(id));
+                        Long.parseLong(id));
                 return getDataColumn(context, contentUri, null, null);
             } else if (isMediaDocument(uri)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
@@ -121,5 +125,19 @@ public class AlbumUtil {
      */
     public static boolean isGooglePhotosUri(Uri uri) {
         return "com.google.android.apps.photos.content".equals(uri.getAuthority());
+    }
+
+    public static byte[] bitMapToBytes(Bitmap bitmap){
+        int byteCount = bitmap.getByteCount();
+        ByteBuffer buffer = ByteBuffer.allocate(byteCount);
+        bitmap.copyPixelsToBuffer(buffer);
+        return buffer.array();
+    }
+
+    public static Bitmap BytesToBitMap(byte[] bytes){
+        if (bytes == null) {
+            return null;
+        }
+        return BitmapFactory.decodeByteArray(bytes,0,bytes.length);
     }
 }

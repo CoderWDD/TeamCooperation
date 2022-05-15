@@ -13,5 +13,6 @@ public class SharedPreferencesConstant {
     public static String CREATE_TIME = "createTime";
     public static String TOKEN = "token";
     public static String FIRST_USE = "FirstUse";
+    public static String AVATAR = "avatar";
 
 }

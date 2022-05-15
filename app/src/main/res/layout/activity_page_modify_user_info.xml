@@ -60,49 +60,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+<!--                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        android:fontFamily="@font/no236"-->
+<!--                        android:text="@string/user_nickname"-->
+<!--                        android:textColor="@color/orange_brown_item"-->
+<!--                        android:textSize="25sp" />-->
+
+<!--                    <EditText-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:layout_marginEnd="10dp"-->
+<!--                        android:background="@null"-->
+<!--                        android:fontFamily="@font/no236"-->
+<!--                        android:maxLength="10"-->
+<!--                        android:inputType="text"-->
+<!--                        android:maxLines="1"-->
+<!--                        android:text="@={UserInfo.nickName}"-->
+<!--                        android:textColor="@color/orange_brown"-->
+<!--                        android:textSize="25sp" />-->
+
+<!--                </androidx.appcompat.widget.LinearLayoutCompat>-->
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:fontFamily="@font/no236"
-                        android:text="@string/user_nickname"
-                        android:textColor="@color/orange_brown_item"
-                        android:textSize="25sp" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@null"
-                        android:fontFamily="@font/no236"
-                        android:maxLength="10"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:text="@={UserInfo.nickName}"
-                        android:textColor="@color/orange_brown"
-                        android:textSize="25sp" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/user_firstname"
                         android:textColor="@color/orange_brown_item"
@@ -111,12 +111,15 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:fontFamily="@font/no236"
                         android:maxLength="10"
                         android:maxLines="1"
+                        android:inputType="text"
+                        android:importantForAutofill="no"
+                        android:hint="@string/first_name"
                         android:text="@={UserInfo.firstName}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
@@ -126,14 +129,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/user_lastname"
                         android:textColor="@color/orange_brown_item"
@@ -142,12 +145,15 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:fontFamily="@font/no236"
                         android:maxLength="10"
+                        android:inputType="text"
                         android:maxLines="1"
+                        android:importantForAutofill="no"
+                        android:hint="@string/last_name"
                         android:text="@={UserInfo.lastName}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
@@ -157,14 +163,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/user_phone_number"
                         android:textColor="@color/orange_brown_item"
@@ -173,13 +179,16 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:fontFamily="@font/no236"
                         android:maxLength="11"
+                        android:inputType="phone"
                         android:maxLines="1"
                         android:text="@={UserInfo.phone}"
+                        android:hint="@string/phone_number"
+                        android:importantForAutofill="no"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
 
@@ -188,14 +197,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/user_department"
                         android:textColor="@color/orange_brown_item"
@@ -204,12 +213,15 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:fontFamily="@font/no236"
                         android:maxLength="30"
                         android:maxLines="1"
+                        android:inputType="text"
+                        android:importantForAutofill="no"
+                        android:hint="@string/department"
                         android:text="@={UserInfo.department}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
@@ -219,14 +231,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/user_description"
                         android:textColor="@color/orange_brown_item"
@@ -235,11 +247,14 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:fontFamily="@font/no236"
+                        android:inputType="text"
                         android:maxLength="60"
+                        android:importantForAutofill="no"
+                        android:hint="@string/description_1"
                         android:maxLines="1"
                         android:text="@={UserInfo.description}"
                         android:textColor="@color/orange_brown"

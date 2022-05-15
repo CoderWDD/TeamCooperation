@@ -36,10 +36,11 @@
     <string name="executor">Executor: </string>
     <string name="executor_test">CoderWdd</string>
     <string name="create_time">CreateTime: </string>
-    <string name="create_time_test">2022-04-19 18:00:00</string>
+    <string name="create_time_test">2022–04–19 18:00:00</string>
     <string name="status">Status: </string>
     <string name="status_test">Done</string>
     <string name="description">Description: </string>
+    <string name="description_1">Description</string>
     <string name="description_test">Nothing to say!</string>
     <string name="belong_to_project">BelongTo: </string>
     <string name="belong_to_project_test">TeamCooperation</string>

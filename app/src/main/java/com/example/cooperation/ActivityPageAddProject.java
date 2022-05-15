@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.cooperation.databinding.ActivityPageAddProjectBinding;
 import com.example.cooperation.databing.PageAddProjectDataBinding;
+import com.example.cooperation.utils.ScreenAdapterUtil;
 
 public class ActivityPageAddProject extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class ActivityPageAddProject extends AppCompatActivity {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         Point size = new Point();
         defaultDisplay.getSize(size);
-        layoutParams.height = (int) (size.y * 0.42);
+        layoutParams.height = ScreenAdapterUtil.dp2px(this,310);
         layoutParams.width = (int) (size.x * 0.9);
         getWindow().setAttributes(layoutParams);
 

@@ -2,17 +2,22 @@ package com.example.cooperation.databing;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.ObservableField;
 
 import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.api.RetrofitRequest_Interface;
+import com.example.cooperation.constant.ActivityRequestCodeConstant;
 import com.example.cooperation.constant.HttpStatus;
 import com.example.cooperation.model.ResponseBody;
 import com.example.cooperation.model.User;
 import com.example.cooperation.utils.check.input.UserSignUpCheckUtil;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,109 +49,115 @@ public class PageSignUpDataBinding {
 
         userRegister.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful() && HttpStatus.OK.equals(response.body().getCode())){
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+                if (response.isSuccessful() && HttpStatus.OK.equals(Objects.requireNonNull(response.body()).getCode())){
                     Toast.makeText(context,"注册成功！",Toast.LENGTH_SHORT).show();
-                    // TODO 将注册的用户名和用户密码返回，方便登录
+                    // 将注册的用户名和用户密码返回，方便登录
+                    Intent intent = new Intent();
+                    intent.putExtra("username",getUserName());
+                    intent.putExtra("password",getPassword());
+                    ((Activity)context).setResult(ActivityRequestCodeConstant.SIGNUP,intent);
+
                     ((Activity)context).finish();
                 }else {
+                    assert response.body() != null;
                     Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                 Toast.makeText(context,"注册失败！",Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public String getNickName() {
-        return observableField.get().getNickName();
+        return Objects.requireNonNull(observableField.get()).getNickName();
     }
 
     public void setNickName(String nickName) {
-        observableField.get().setNickName(nickName);
+        Objects.requireNonNull(observableField.get()).setNickName(nickName);
     }
 
     public String getFirstName() {
-        return observableField.get().getFirstName();
+        return Objects.requireNonNull(observableField.get()).getFirstName();
     }
 
     public void setFirstName(String firstName) {
-        observableField.get().setFirstName(firstName);
+        Objects.requireNonNull(observableField.get()).setFirstName(firstName);
     }
 
     public String getLastName() {
-        return observableField.get().getLastName();
+        return Objects.requireNonNull(observableField.get()).getLastName();
     }
 
     public void setLastName(String lastName) {
-        observableField.get().setLastName(lastName);
+        Objects.requireNonNull(observableField.get()).setLastName(lastName);
     }
 
     public String getDepartment() {
-        return observableField.get().getDepartment();
+        return Objects.requireNonNull(observableField.get()).getDepartment();
     }
 
     public void setDepartment(String department) {
-        observableField.get().setDepartment(department);
+        Objects.requireNonNull(observableField.get()).setDepartment(department);
     }
 
     public String getPhone() {
-        return observableField.get().getPhone();
+        return Objects.requireNonNull(observableField.get()).getPhone();
     }
 
     public void setPhone(String phone) {
-        observableField.get().setPhone(phone);
+        Objects.requireNonNull(observableField.get()).setPhone(phone);
     }
 
     public String getUserName() {
-        return observableField.get().getUserName();
+        return Objects.requireNonNull(observableField.get()).getUserName();
     }
 
     public void setUserName(String userName) {
-        observableField.get().setUserName(userName);
+        Objects.requireNonNull(observableField.get()).setUserName(userName);
     }
 
     public String getPassword() {
-        return observableField.get().getPassword();
+        return Objects.requireNonNull(observableField.get()).getPassword();
     }
 
     public void setPassword(String password) {
-        observableField.get().setPassword(password);
+        Objects.requireNonNull(observableField.get()).setPassword(password);
     }
 
     public String getCreateTime() {
-        return observableField.get().getCreateTime();
+        return Objects.requireNonNull(observableField.get()).getCreateTime();
     }
 
     public void setCreateTime(String createTime) {
-        observableField.get().setCreateTime(createTime);
+        Objects.requireNonNull(observableField.get()).setCreateTime(createTime);
     }
 
     public String getSex() {
-        return observableField.get().getSex();
+        return Objects.requireNonNull(observableField.get()).getSex();
     }
 
     public void setSex(String sex) {
-        observableField.get().setSex(sex);
+        Objects.requireNonNull(observableField.get()).setSex(sex);
     }
 
     public String getDescription() {
-        return observableField.get().getDescription();
+        return Objects.requireNonNull(observableField.get()).getDescription();
     }
 
     public void setDescription(String description) {
-        observableField.get().setDescription(description);
+        Objects.requireNonNull(observableField.get()).setDescription(description);
     }
 
     public void setAvatar(byte[] avatar){
-        observableField.get().setAvatar(avatar);
+        Objects.requireNonNull(observableField.get()).setAvatar(avatar);
     }
 
     public byte[] getAvatar(){
-        return observableField.get().getAvatar();
+        return Objects.requireNonNull(observableField.get()).getAvatar();
     }
 
 }

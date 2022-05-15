@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.cooperation.databinding.ActivityFloatingActionButtonChooseBinding;
 import com.example.cooperation.databing.ActivityFloatingActionButtonDataBinding;
+import com.example.cooperation.utils.ScreenAdapterUtil;
 
 public class ActivityFloatingActionButtonChoose extends AppCompatActivity {
 
@@ -29,9 +30,8 @@ public class ActivityFloatingActionButtonChoose extends AppCompatActivity {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         Point size = new Point();
         defaultDisplay.getSize(size);
-        layoutParams.height = (int) (size.y * 0.25);
+        layoutParams.height = ScreenAdapterUtil.dp2px(this,210);
         layoutParams.width = (int) (size.x * 0.9);
         getWindow().setAttributes(layoutParams);
-
     }
 }

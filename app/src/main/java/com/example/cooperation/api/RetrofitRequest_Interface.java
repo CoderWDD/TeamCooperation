@@ -41,6 +41,9 @@ public interface RetrofitRequest_Interface {
     @GET("user/get/current")
     Call<UserInfoResponseBody> userGetCurrent(@Header("token") String token);
 
+    @POST("user/avatar/upload")
+    Call<ResponseBody> userAvatarUpload(@Header("token") String token, @Body byte[] avatar);
+
     @POST("project/create")
     Call<ResponseBody> projectCreate(@Header("token") String token, @Body ProjectCreate projectCreate);
 

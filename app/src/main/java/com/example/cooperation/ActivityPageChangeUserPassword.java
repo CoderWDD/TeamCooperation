@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.cooperation.databinding.ActivityPageChangeUserPasswordBinding;
 import com.example.cooperation.databing.ActivityPageChangePasswordDataBinding;
+import com.example.cooperation.utils.ScreenAdapterUtil;
 
 public class ActivityPageChangeUserPassword extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class ActivityPageChangeUserPassword extends AppCompatActivity {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         Point size = new Point();
         defaultDisplay.getSize(size);
-        layoutParams.height = (int) (size.y * 0.3);
+        layoutParams.height = ScreenAdapterUtil.dp2px(this,240);
         layoutParams.width = (int) (size.x * 0.9);
         getWindow().setAttributes(layoutParams);
     }
