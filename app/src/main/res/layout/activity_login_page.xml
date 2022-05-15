@@ -104,7 +104,7 @@
                     android:fontFamily="@font/no236"
                     android:stateListAnimator="@null"
                     android:text="@string/login"
-                    android:onClick="@{LoginPageEventHandler.onLoginClicked}"
+                    android:onClick="@{LoginPageEventHandler::onLoginClicked}"
                     android:textColor="@color/orange_brown"
                     android:textSize="25sp"
                     app:backgroundTint="@color/button_login_background_3C"
@@ -119,7 +119,7 @@
                     android:fontFamily="@font/no236"
                     android:stateListAnimator="@null"
                     android:text="@string/sign_up"
-                    android:onClick="@{LoginPageEventHandler.onSignUpClicked}"
+                    android:onClick="@{LoginPageEventHandler::onSignUpClicked}"
                     android:textColor="@color/orange_brown"
                     android:textSize="25sp"
                     app:cornerRadius="10dp" />

@@ -64,7 +64,7 @@
                     android:layout_width="75dp"
                     android:layout_height="75dp"
                     android:scaleType="fitXY"
-                    android:onClick="@{ProfileEventHandler.onAvatarButtonClicked}"
+                    android:onClick="@{ProfileEventHandler::onAvatarButtonClicked}"
                     android:src="@mipmap/default_avatar"
                     app:shapeAppearanceOverlay="@style/circleImageStyle"/>
 
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/profile_modify_info"
                         android:background="@drawable/button_profile_background"
-                        android:onClick="@{ProfileEventHandler.onModifyInfoClicked}"
+                        android:onClick="@{ProfileEventHandler::onModifyInfoClicked}"
                         android:fontFamily="@font/no236"
                         android:textColor="@color/orange_brown"
                         android:layout_marginTop="12dp"
@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/profile_logout"
                         android:background="@drawable/button_profile_background"
-                        android:onClick="@{ProfileEventHandler.onLogoutClicked}"
+                        android:onClick="@{ProfileEventHandler::onLogoutClicked}"
                         android:fontFamily="@font/no236"
                         android:layout_marginTop="15dp"
                         android:textColor="@color/orange_brown"

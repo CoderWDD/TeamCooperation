@@ -216,7 +216,7 @@
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/no236"
-                    android:onClick="@{SignUpPageEventHandler.onSignUpClicked}"
+                    android:onClick="@{SignUpPageEventHandler::onSignUpClicked}"
                     android:stateListAnimator="@null"
                     android:text="@string/sign_up"
                     android:textColor="@color/orange_brown"

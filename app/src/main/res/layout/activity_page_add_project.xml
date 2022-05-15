@@ -35,14 +35,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/projects_project_name"
                         android:textColor="@color/orange_brown_item"
@@ -51,12 +51,15 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:fontFamily="@font/no236"
                         android:maxLength="30"
                         android:maxLines="1"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:hint="@string/projects_project_name_1"
                         android:text="@={EventHandler.projectName}"
                         android:textColor="@color/orange_brown"
                         android:textSize="25sp" />
@@ -66,14 +69,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/description"
                         android:textColor="@color/orange_brown_item"
@@ -82,12 +85,14 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
                         android:background="@null"
                         android:ellipsize="end"
+                        android:importantForAutofill="no"
+                        android:hint="@string/description_1"
                         android:fontFamily="@font/no236"
-                        android:inputType="textMultiLine"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:text="@={EventHandler.description}"
                         android:textColor="@color/orange_brown"
@@ -98,14 +103,14 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/no236"
                         android:text="@string/priority"
                         android:textColor="@color/orange_brown_item"
@@ -128,7 +133,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/no236"
-                    android:onClick="@{EventHandler.onCreateProjectClicked}"
+                    android:onClick="@{EventHandler::onCreateProjectClicked}"
                     android:stateListAnimator="@null"
                     android:text="@string/project_create"
                     android:textColor="@color/orange_brown"

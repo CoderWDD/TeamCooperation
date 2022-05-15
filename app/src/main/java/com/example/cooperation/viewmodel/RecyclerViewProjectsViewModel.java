@@ -1,13 +1,14 @@
 package com.example.cooperation.viewmodel;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -55,6 +56,7 @@ public class RecyclerViewProjectsViewModel {
         Call<ProjectListResponseBody> projectListResponseBodyCall = retrofitRequestInterface.projectGetList(MyRetrofit.getToken());
 
         projectListResponseBodyCall.enqueue(new Callback<ProjectListResponseBody>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(@NonNull Call<ProjectListResponseBody> call, @NonNull Response<ProjectListResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())) {
@@ -92,36 +94,30 @@ public class RecyclerViewProjectsViewModel {
                             dialog.setTitle(R.string.attention);
                             dialog.setMessage(R.string.delete_message);
 
-                            dialog.setPositiveButton(R.string.delete_positive_button, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    // 确定删除
-                                    RetrofitRequest_Interface retrofitRequestInterface1 = MyRetrofit.getRetrofitRequestInterface();
-                                    Call<ResponseBody> responseBodyCall = retrofitRequestInterface1.projectDelete(MyRetrofit.getToken(), project.getProjectId());
+                            dialog.setPositiveButton(R.string.delete_positive_button, (dialogInterface, i) -> {
+                                // 确定删除
+                                RetrofitRequest_Interface retrofitRequestInterface1 = MyRetrofit.getRetrofitRequestInterface();
+                                Call<ResponseBody> responseBodyCall = retrofitRequestInterface1.projectDelete(MyRetrofit.getToken(), project.getProjectId());
 
-                                    // 删除project
-                                    responseBodyCall.enqueue(new Callback<ResponseBody>() {
-                                        @Override
-                                        public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
-                                            if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
-                                                Toast.makeText(context,response.body().getData(),Toast.LENGTH_SHORT).show();
-                                            }else {
-                                                Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
-                                            }
+                                // 删除project
+                                responseBodyCall.enqueue(new Callback<ResponseBody>() {
+                                    @Override
+                                    public void onResponse(@NonNull Call<ResponseBody> call1, @NonNull Response<ResponseBody> response1) {
+                                        if (response1.isSuccessful() && response1.body() != null && HttpStatus.OK.equals(response1.body().getCode())){
+                                            Toast.makeText(context, response1.body().getData(),Toast.LENGTH_SHORT).show();
+                                        }else {
+                                            Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
                                         }
+                                    }
 
-                                        @Override
-                                        public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                                            Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
+                                    @Override
+                                    public void onFailure(@NonNull Call<ResponseBody> call1, @NonNull Throwable t) {
+                                        Toast.makeText(context,t.toString(),Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             });
-                            dialog.setNegativeButton(R.string.delete_negative_button, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                            dialog.setNegativeButton(R.string.delete_negative_button, (dialogInterface, i) -> {
 
-                                }
                             });
 
                             // TODO 将Dialog的样式自定义好看点

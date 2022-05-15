@@ -114,7 +114,7 @@
             android:layout_marginBottom="10dp"
             android:clickable="true"
             android:contentDescription="@string/projects_button_plus"
-            android:onClick="@{ProjectsEventHandler.onFloatingActionButtonClicked}"
+            android:onClick="@{ProjectsEventHandler::onFloatingActionButtonClicked}"
             android:src="@drawable/floating_action_button_background"
             app:elevation="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

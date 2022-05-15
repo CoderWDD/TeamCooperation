@@ -64,7 +64,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/no236"
-                    android:onClick="@{EventHandler.onJoinProjectClick}"
+                    android:onClick="@{EventHandler::onJoinProjectClick}"
                     android:stateListAnimator="@null"
                     android:text="@string/project_Join_into"
                     android:textColor="@color/orange_brown"

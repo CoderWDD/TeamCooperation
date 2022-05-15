@@ -50,6 +50,7 @@
     <!-- Strings related to projects -->
     <string name="projects_to_do_label">Projects To Do!</string>
     <string name="projects_project_name">ProjectName: </string>
+    <string name="projects_project_name_1">ProjectName</string>
     <string name="projects_project_time">ProjectTime: </string>
     <string name="projects_invitation_code">InvitationCode: </string>
     <string name="projects_button_plus">Add a new projects!</string>
