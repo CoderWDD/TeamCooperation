@@ -3,11 +3,13 @@ package com.example.cooperation.viewmodel;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -55,6 +57,7 @@ public class RecyclerViewTodoViewModel {
         Call<ItemListResponseBody> responseBodyCall = retrofitRequestInterface.itemGetCurrentItemList(MyRetrofit.getToken());
 
         responseBodyCall.enqueue(new Callback<ItemListResponseBody>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(@NonNull Call<ItemListResponseBody> call, @NonNull Response<ItemListResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
@@ -97,11 +100,7 @@ public class RecyclerViewTodoViewModel {
                                     responseBodyCall1.enqueue(new Callback<ResponseBody>() {
                                         @Override
                                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                                            if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
-                                                Toast.makeText(context,response.body().getData(),Toast.LENGTH_SHORT).show();
-                                            }else {
-                                                Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
-                                            }
+                                            Toast.makeText(context,response.body().getData(),Toast.LENGTH_SHORT).show();
                                         }
 
                                         @Override

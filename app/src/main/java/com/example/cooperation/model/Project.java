@@ -20,14 +20,14 @@ public class Project implements Serializable {
 
     private int priority;
 
-    private List<String> cooperatorsList;
+    private List<String> cooperators;
 
-    public List<String> getCooperatorsList() {
-        return cooperatorsList;
+    public List<String> getCooperators() {
+        return cooperators;
     }
 
-    public void setCooperatorsList(List<String> cooperatorsList) {
-        this.cooperatorsList = cooperatorsList;
+    public void setCooperators(List<String> cooperators) {
+        this.cooperators = cooperators;
     }
 
     public int getProjectId() {

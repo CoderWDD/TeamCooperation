@@ -219,7 +219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/no236"
-                        android:text="@{projects.cooperatorsList.toString()}"
+                        android:text="@{projects.cooperators.toString()}"
                         android:textColor="@color/orange_brown_item"
                         android:textSize="25sp" />
 

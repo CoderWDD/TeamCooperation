@@ -32,8 +32,8 @@ public class PageAddItemDataBinding {
         }
         // 发起网络请求，将item添加到Project中
 
-        Spinner spinnerStatus = (Spinner)((Activity) context).findViewById(R.id.spinner_status);
-        Spinner spinnerExecutor = (Spinner)((Activity) context).findViewById(R.id.spinner_executor);
+        Spinner spinnerStatus = ((Activity) context).findViewById(R.id.spinner_status);
+        Spinner spinnerExecutor = ((Activity) context).findViewById(R.id.spinner_executor);
         Spinner spinnerPriority = ((Activity) context).findViewById(R.id.spinner_item_add_priority);
 
         int spinnerPriorityIndex = SpinnerPriorityUtil.SelectItemToIndex((String) spinnerPriority.getSelectedItem());

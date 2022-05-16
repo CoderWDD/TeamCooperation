@@ -8,6 +8,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.cooperation.api.MyRetrofit;
 import com.example.cooperation.databinding.ActivityPageAddItemBinding;
 import com.example.cooperation.databing.PageAddItemDataBinding;
 import com.example.cooperation.model.ItemAdd;
@@ -55,15 +56,21 @@ public class ActivityPageAddItem extends AppCompatActivity {
 
         // 配置Executor Spinner
         Spinner spinnerCooperators = findViewById(R.id.spinner_executor);
-        List<String> cooperatorsList = project.getCooperatorsList();
+        List<String> cooperatorsList = project.getCooperators();
 
         // 避免NPE
         if (cooperatorsList == null){
             cooperatorsList = new LinkedList<>();
         }
 
-        // 默认最少有自己一个执行者
-        cooperatorsList.add(project.getAuthor());
+        // 默认自己就是执行者
+        cooperatorsList.add(MyRetrofit.getUser().getUserName());
+
+        // 如果当前不是创建者，则把执行者列表中的创建者名字去掉
+        if (!MyRetrofit.getUser().getUserName().equals(project.getAuthor()) && cooperatorsList.contains(project.getAuthor())){
+            cooperatorsList.remove(project.getAuthor());
+        }
+
         ArrayAdapter<String> adapterCooperators = new ArrayAdapter<>(this, R.layout.status_spinner_text, cooperatorsList);
         adapterCooperators.setDropDownViewResource(R.layout.status_spinner_text);
         spinnerCooperators.setAdapter(adapterCooperators);

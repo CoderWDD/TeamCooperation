@@ -31,7 +31,7 @@ public class ActivityPageAddProject extends AppCompatActivity {
         Point size = new Point();
         defaultDisplay.getSize(size);
         layoutParams.height = ScreenAdapterUtil.dp2px(this,310);
-        layoutParams.width = (int) (size.x * 0.9);
+        layoutParams.width = (int) (size.x * 0.95);
         getWindow().setAttributes(layoutParams);
 
         // 配置Priority Spinner

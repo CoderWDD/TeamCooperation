@@ -188,7 +188,7 @@
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/spinner_executor"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -284,9 +284,9 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/no236"
+                    android:onClick="@{(view)->EventHandler.onAddToProjectClick(view,item)}"
                     android:stateListAnimator="@null"
                     android:text="@string/project_detail_add_item_to_project"
-                    android:onClick="@{(view)->EventHandler.onAddToProjectClick(view,item)}"
                     android:textColor="@color/orange_brown"
                     android:textSize="25sp"
                     app:backgroundTint="@color/button_login_background_3C"

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -41,7 +40,7 @@ public class PageProjectDetailsDataBinding {
     public void onModifyClick(View view,Project project){
         // 网络请求，修改project
 
-        Spinner spinnerStatus = (Spinner)((Activity) context).findViewById(R.id.spinner_project_status);
+        Spinner spinnerStatus = ((Activity) context).findViewById(R.id.spinner_project_status);
         String selectedStatus = (String)spinnerStatus.getSelectedItem();
 
         Spinner spinnerPriority = ((Activity) context).findViewById(R.id.spinner_project_details_priority);
