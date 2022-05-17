@@ -90,6 +90,7 @@
 
                 </androidx.appcompat.widget.AppCompatCheckBox>
 
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

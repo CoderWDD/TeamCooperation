@@ -35,18 +35,30 @@ public class SelectListByStatusUtil {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public static List<ItemAdd> selectItems(List<ItemAdd> originList, boolean todo, boolean doing, boolean done){
+    public static List<ItemAdd> selectItems(List<ItemAdd> originList, boolean todo, boolean doing, boolean done,boolean Coops,String username){
         List<ItemAdd> res = new LinkedList<>();
 
         for (ItemAdd e : originList){
-            if (todo && Status.TODO.equals(e.getStatus())){
-                res.add(e);
-            }
-            if (doing && Status.DOING.equals(e.getStatus())){
-                res.add(e);
-            }
-            if (done && Status.DONE.equals(e.getStatus())){
-                res.add(e);
+            if (Coops){
+                if (todo && Status.TODO.equals(e.getStatus())){
+                    res.add(e);
+                }
+                if (doing && Status.DOING.equals(e.getStatus())){
+                    res.add(e);
+                }
+                if (done && Status.DONE.equals(e.getStatus())){
+                    res.add(e);
+                }
+            }else {
+                if (todo && Status.TODO.equals(e.getStatus()) && e.getExecutor().equals(username)){
+                    res.add(e);
+                }
+                if (doing && Status.DOING.equals(e.getStatus())  && e.getExecutor().equals(username)){
+                    res.add(e);
+                }
+                if (done && Status.DONE.equals(e.getStatus())  && e.getExecutor().equals(username)){
+                    res.add(e);
+                }
             }
         }
 

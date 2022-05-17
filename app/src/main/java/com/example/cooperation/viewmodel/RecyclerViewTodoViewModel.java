@@ -70,12 +70,14 @@ public class RecyclerViewTodoViewModel {
                     AppCompatCheckBox itemDoing = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_doing);
 
                     AppCompatCheckBox itemDone = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_done);
+
+                    AppCompatCheckBox showCoops = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_show_cooperators);
                     List<ItemAdd> showList;
                     if (itemTodo == null || itemDoing == null || itemDone == null){
                         Toast.makeText(context,"Something wrong!",Toast.LENGTH_SHORT).show();
                         return;
                     }else {
-                        showList = SelectListByStatusUtil.selectItems(itemList, itemTodo.isChecked(), itemDoing.isChecked(), itemDone.isChecked());
+                        showList = SelectListByStatusUtil.selectItems(itemList, itemTodo.isChecked(), itemDoing.isChecked(), itemDone.isChecked(),showCoops.isChecked(),MyRetrofit.getUser().getUserName());
                     }
 
                     RecyclerViewAdapterForTodo recyclerViewAdapterForTodo = new RecyclerViewAdapterForTodo(showList, new TaskItemClicked() {

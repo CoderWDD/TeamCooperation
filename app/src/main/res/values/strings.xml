@@ -94,6 +94,7 @@
     <string name="status_todo">todo</string>
     <string name="status_doing">doing</string>
     <string name="status_done">done</string>
+    <string name="show_cooperators">Cp\'s</string>
 
     <string name="priority">priority: </string>
 
