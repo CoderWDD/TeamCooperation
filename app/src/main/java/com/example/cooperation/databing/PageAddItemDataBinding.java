@@ -56,6 +56,8 @@ public class PageAddItemDataBinding {
                 if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
                     Toast.makeText(context,"Item add succeed！",Toast.LENGTH_SHORT).show();
                     ((Activity) context).finish();
+                }else {
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
 

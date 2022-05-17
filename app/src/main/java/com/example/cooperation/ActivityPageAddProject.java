@@ -30,7 +30,7 @@ public class ActivityPageAddProject extends AppCompatActivity {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         Point size = new Point();
         defaultDisplay.getSize(size);
-        layoutParams.height = ScreenAdapterUtil.dp2px(this,310);
+        layoutParams.height = ScreenAdapterUtil.dp2px(this,368);
         layoutParams.width = (int) (size.x * 0.95);
         getWindow().setAttributes(layoutParams);
 

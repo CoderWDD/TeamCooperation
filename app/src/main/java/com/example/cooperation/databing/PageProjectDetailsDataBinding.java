@@ -63,6 +63,9 @@ public class PageProjectDetailsDataBinding {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null && HttpStatus.OK.equals(response.body().getCode())){
                     Toast.makeText(context,response.body().getData(),Toast.LENGTH_SHORT).show();
+                }else {
+                    assert response.body() != null;
+                    Toast.makeText(context,response.body().getMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
 
