@@ -41,12 +41,15 @@ public class PageItemToDoFragment extends Fragment {
 
         AppCompatCheckBox itemDone = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_status_done);
 
+        AppCompatCheckBox showCoops = fragmentPageItemToDoBinding.getRoot().findViewById(R.id.item_show_cooperators);
+
         itemTodo.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
 
         itemDoing.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
 
         itemDone.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
 
+        showCoops.setOnCheckedChangeListener((compoundButton, b) -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
 
         swipeRefreshLayout.setOnRefreshListener(() -> recyclerViewTodoViewModel.refreshRecyclerViewItems());
 
