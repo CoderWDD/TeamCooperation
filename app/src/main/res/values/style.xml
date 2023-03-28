@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="inputHintStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/orange_brown_hint</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="navigation_bottom_style" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/orange_brown</item>
+        <item name="android:textColorSecondary">@color/navigation_bottom_item_uncheck</item>
+    </style>
+
+
+    <style name="Transparent" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="android:windowIsTranslucent">true</item><!--透明-->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="colorPrimary">@color/orange_brown</item>
+        <item name="colorPrimaryVariant">@color/orange_brown</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item> <!--activity出现动画-->
+    </style>
+
+    <dimen name="design_fab_image_size" tools:override="true">56dp</dimen>
+
+    <style name="circleImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">QiHangCooperation</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="author">吴某人</string>
+    <string name="version">beta 1.0</string>
+    <string name="welcome">Welcome!</string>
+    <string name="WelcomeContent">TeamCooperation is an app which help you manage your projects with your team!</string>
+    <string name="welcome_skip">skip-></string>
+
+    <!-- Strings related to login -->
+    <string name="login_for_continue">Login for continue use TeamCooperation!</string>
+    <string name="password_input_hint">Password:</string>
+    <string name="username_input_hint">Username:</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="image_logo_description">Splash image missing!</string>
+
+    <!-- Strings related to signup -->
+    <string name="signup_for_continue">Hello there, sign up to continue.</string>
+    <string name="first_name">FirstName</string>
+    <string name="last_name">LastName</string>
+    <string name="department">Department</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+
+    <!-- Strings related to bottom menu navigation -->
+    <string name="menu_bottom_nav_todo">ToDo</string>
+    <string name="menu_bottom_nav_projects">Projects</string>
+    <string name="menu_bottom_nav_profile">Profile</string>
+
+    <!-- Strings related to item -->
+    <string name="item_name">ItemName: </string>
+    <string name="item_name_test">help</string>
+    <string name="creator">Creator: </string>
+    <string name="creator_test">CoderWdd</string>
+    <string name="executor">Executor: </string>
+    <string name="executor_test">CoderWdd</string>
+    <string name="create_time">CreateTime: </string>
+    <string name="create_time_test">2022–04–19 18:00:00</string>
+    <string name="status">Status: </string>
+    <string name="status_test">Done</string>
+    <string name="description">Description: </string>
+    <string name="description_1">Description</string>
+    <string name="description_test">Nothing to say!</string>
+    <string name="belong_to_project">BelongTo: </string>
+    <string name="belong_to_project_test">TeamCooperation</string>
+    <string name="item_to_do_label">Items To Do!</string>
+    <string name="item_details">Item Details</string>
+
+    <!-- Strings related to projects -->
+    <string name="projects_to_do_label">Projects To Do!</string>
+    <string name="projects_project_name">ProjectName: </string>
+    <string name="projects_project_name_1">ProjectName</string>
+    <string name="projects_project_time">ProjectTime: </string>
+    <string name="projects_invitation_code">InvitationCode: </string>
+    <string name="projects_button_plus">Add a new projects!</string>
+    <string name="project_details">Project Details</string>
+    <string name="project_cooperators">Cooperators: </string>
+    <string name="project_modify">Modify</string>
+    <string name="project_detail_invite">Cooperator Name</string>
+    <string name="project_detail_add_item">Add Item</string>
+    <string name="project_detail_add_item_to_project">Add To Project</string>
+    <string name="project_add_new">Add Project</string>
+    <string name="project_Join_into_project">Join Project</string>
+    <string name="project_Join_into">Join Into</string>
+    <string name="project_create">Create</string>
+
+    <!--  random images url  -->
+    <string name="random_images">https://source.unsplash.com/random</string>
+
+    <!-- Strings related to profile -->
+    <string name="profile_my_profiles">My Profiles!</string>
+    <string name="profile_setting">Setting</string>
+    <string name="profile_modify_info">Modify Info</string>
+    <string name="profile_logout">Logout</string>
+    <string name="profile_modify_user_info">Modify Info</string>
+    <string name="user_nickname">Nickname: </string>
+    <string name="user_firstname">Firstname: </string>
+    <string name="user_lastname">Lastname: </string>
+    <string name="user_phone_number">Phone: </string>
+    <string name="user_department">Department: </string>
+    <string name="user_description">Description: </string>
+    <string name="user_sex">Sex: </string>
+    <string name="user_change_password">Change Password</string>
+    <string name="user_change_password_confirm">Confirm Change</string>
+    <string name="user_change_password_new">New Password: </string>
+
+
+    <string name="attention">Attention: </string>
+    <string name="delete_message">Delete Or Not?</string>
+    <string name="delete_positive_button">Yes</string>
+    <string name="delete_negative_button">No</string>
+
+    <string name="status_todo">todo</string>
+    <string name="status_doing">doing</string>
+    <string name="status_done">done</string>
+    <string name="show_cooperators">Cp\'s</string>
+
+    <string name="priority">priority: </string>
+</resources>

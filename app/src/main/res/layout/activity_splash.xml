@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".pages.SplashActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/page_splash_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="@+id/page_splash"
+            android:fontFamily="@font/no236"
+            android:gravity="center"
+            android:paddingTop="60dp"
+            android:text="@string/welcome"
+            android:textColor="@color/orange_brown"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/page_splash_welcome"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/no236"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:text="@string/WelcomeContent"
+            android:textColor="@color/orange_brown"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/page_splash"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_logo_description"
+            android:paddingHorizontal="30dp"
+            android:src="@mipmap/page_splash" />
+
+        <Button
+            android:id="@+id/page_splash_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/page_splash"
+            android:layout_alignBottom="@id/page_splash"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="90dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/no236"
+            android:text="@string/welcome_skip"
+            android:textAllCaps="false"
+            android:textColor="@color/orange_brown"
+            android:textSize="25sp" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/page_splash"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/page_splash"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/no236"
+                android:gravity="center"
+                android:text="@string/author"
+                android:textColor="@color/orange_brown"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/page_splash"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/no236"
+                android:gravity="center"
+                android:text="@string/version"
+                android:textColor="@color/orange_brown"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="10dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
