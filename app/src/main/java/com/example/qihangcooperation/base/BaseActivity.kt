@@ -1,7 +1,10 @@
 package com.example.qihangcooperation.base
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.viewbinding.ViewBinding
@@ -18,13 +21,21 @@ abstract class BaseActivity<VB: ViewBinding>(private val bindingInflate: (inflat
         super.onCreate(savedInstanceState)
         _viewBinding = bindingInflate.invoke(layoutInflater)
         setContentView(viewBinding.root)
+        hideSystemStatusBar()
         onCreate()
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _viewBinding = null
     }
 
     abstract fun onCreate()
+
+    private fun hideSystemStatusBar(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController.apply {
+                hideSystemStatusBar()
+            }
+        }
+    }
 }

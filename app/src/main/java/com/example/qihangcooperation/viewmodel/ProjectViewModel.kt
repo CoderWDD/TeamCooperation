@@ -10,6 +10,7 @@ import com.example.qihangcooperation.pojo.TaskSet
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class ProjectViewModel : ViewModel() {

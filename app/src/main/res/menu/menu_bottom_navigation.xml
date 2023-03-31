@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/pageItemToDoFragment"
+        android:icon="@mipmap/icon_todo"
+        android:title="@string/menu_bottom_nav_todo" />
+    <item android:id="@+id/pageProjectsFragment"
+        android:icon="@mipmap/icon_projects"
+        android:title="@string/menu_bottom_nav_projects" />
+    <item android:id="@+id/pageProfileFragment"
+        android:icon="@mipmap/icon_user"
+        android:title="@string/menu_bottom_nav_profile" />
+</menu>
