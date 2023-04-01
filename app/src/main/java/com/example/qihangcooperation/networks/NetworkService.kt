@@ -11,10 +11,10 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NetworkService {
-    @POST("/authenticate")
+    @POST("/api/authenticate")
     suspend fun authenticate(@Body user: UserDTO): ResponseData<Map<String, String>>
 
-    @POST("/register")
+    @POST("/api/register")
     suspend fun register(@Body userDTO: UserDTO): ResponseData<Any>
 
     @POST("/api/project/create")

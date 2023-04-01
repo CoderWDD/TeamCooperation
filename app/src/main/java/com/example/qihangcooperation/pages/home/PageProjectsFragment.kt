@@ -11,7 +11,6 @@ import com.example.qihangcooperation.databinding.FragmentPageProjectsBinding
 
 class PageProjectsFragment : BaseFragment<FragmentPageProjectsBinding>(FragmentPageProjectsBinding::inflate) {
     override fun onCreateView() {
-        TODO("Not yet implemented")
-    }
 
+    }
 }

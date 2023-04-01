@@ -2,122 +2,276 @@ package com.example.qihangcooperation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.qihangcooperation.networks.RetrofitClient
+import com.example.qihangcooperation.constants.HttpStatusConstants
 import com.example.qihangcooperation.pojo.Project
 import com.example.qihangcooperation.pojo.ProjectSet
 import com.example.qihangcooperation.pojo.Task
 import com.example.qihangcooperation.pojo.TaskSet
+import com.example.qihangcooperation.repository.ProjectRepository
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 class ProjectViewModel : ViewModel() {
+    private val projectRepository = ProjectRepository(viewModelScope)
+
+    // Create Project
     fun createProject(project: Project) = flow {
-        emit(RetrofitClient.retrofitService.createProject(project = project))
-    }.flowOn(viewModelScope.coroutineContext)
-        .catch { e -> e.printStackTrace()}
-
-    fun updateProject(project: Project, id: Long) = flow {
-        emit(RetrofitClient.retrofitService.updateProject(project = project, id = id))
-    }.flowOn(viewModelScope.coroutineContext)
-        .catch { e -> e.printStackTrace()}
-
-    fun deleteProject(id: Long) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.deleteProject(id = id)
+        emit(projectRepository.createProject(project = project))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
 
-    fun deleteProjects(projectSet: ProjectSet) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.deleteProjects(projectSet = projectSet)
+    // Get Projects
+    fun getProjects(username: String) = flow {
+        emit(projectRepository.getAllProjects(username))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
-
-    fun getProject(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.getProject(id = id))
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
-        .catch { e -> e.printStackTrace()}
 
-    fun getAllProjects(username: String) = flow {
-        emit(RetrofitClient.retrofitService.getAllProjects(username = username))
+    // Get Project
+    fun getProject(projectId: Long) = flow {
+        emit(projectRepository.getProject(projectId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
-        .catch { e -> e.printStackTrace()}
 
+    // Update Project
+    fun updateProject(project: Project, projectId: Long) = flow {
+        emit(projectRepository.updateProject(project, projectId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Delete Project
+    fun deleteProject(projectId: Long) = flow {
+        emit(projectRepository.deleteProject(projectId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Delete Projects
+    fun deleteProjects(projectSet: ProjectSet) = flow {
+        emit(projectRepository.deleteProjects(projectSet))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Get Manager Projects
     fun getManageProjects(username: String) = flow {
-        emit(RetrofitClient.retrofitService.getManageProjects(username = username))
+        emit(projectRepository.getManageProjects(username))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
-        .catch { e -> e.printStackTrace()}
 
-
-    fun inviteUser(projectId: Long, username: String) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.inviteUser(id = projectId, username = username)
+    // Invite Member
+    fun inviteMember(projectId: Long, username: String) = flow {
+        emit(projectRepository.inviteUser(projectId, username))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
 
-    fun inviteByCode(code: String) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.inviteByCode(inviteCode = code)
+    // Invite By Code
+    fun inviteByCode(code: String) = flow {
+        emit(projectRepository.inviteByCode(code))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
 
-    fun deleteMember(projectId: Long, username: String) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.deleteInvite(id = projectId, username = username)
+    // Delete Member
+    fun deleteMember(projectId: Long, username: String) = flow {
+        emit(projectRepository.deleteMember(projectId, username))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
 
+    // Get Possible Members
     fun getPossibleMembers(projectId: Long) = flow {
-        emit(RetrofitClient.retrofitService.getProjectUsers(id = projectId))
+        emit(projectRepository.getPossibleMembers(projectId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
-        .catch { e -> e.printStackTrace()}
 
+    // Create Task
     fun createTask(projectId: Long, task: Task) = flow {
-        emit(RetrofitClient.retrofitService.createTask(projectId = projectId, task = task))
-    }.flowOn(viewModelScope.coroutineContext)
-
-    fun updateTask(projectId: Long, task: Task, id: Long) = flow {
-        emit(RetrofitClient.retrofitService.updateTask(projectId = projectId, task = task, id = id))
-    }.flowOn(viewModelScope.coroutineContext)
-
-    fun deleteTask(id: Long) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.deleteTask(id = id)
+        emit(projectRepository.createTask(projectId, task))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
 
-    fun deleteTasks(taskSet: TaskSet) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.deleteMultiTasks(taskSet = taskSet)
+    // Get Tasks
+    fun getTasks(projectId: Long) = flow {
+        emit(projectRepository.getAllTasks(projectId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
-
-    fun getTask(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.getTask(id = id))
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
-    fun getAllTasks(projectId: Long) = flow {
-        emit(RetrofitClient.retrofitService.getTaskList(projectId = projectId))
-    }.flowOn(viewModelScope.coroutineContext)
-
-    fun getAllInvitedUsers(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.getAllInvitedUser(id = id))
-    }.flowOn(viewModelScope.coroutineContext)
-
-    fun addUserToTask(taskId: Long, userId: Long) {
-        viewModelScope.launch {
-            RetrofitClient.retrofitService.addUserToTask(id = taskId, userId = userId)
+    // Get Task
+    fun getTask(taskId: Long) = flow {
+        emit(projectRepository.getTask(taskId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
         }
-    }
-
-    fun currentUserIsManager() = flow {
-        emit(RetrofitClient.retrofitService.currentUser())
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
+    // Update Task
+    fun updateTask(projectId: Long, taskId: Long, task: Task) = flow {
+        emit(projectRepository.updateTask(projectId = projectId, task = task, id = taskId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Delete Task
+    fun deleteTask(taskId: Long) = flow {
+        emit(projectRepository.deleteTask(taskId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Delete Tasks
+    fun deleteTasks(taskSet: TaskSet) = flow {
+        emit(projectRepository.deleteTasks(taskSet))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Get All Invited Users
+    fun getAllInvitedUsers(projectId: Long) = flow {
+        emit(projectRepository.getAllInvitedUsers(projectId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Add User To Task
+    fun addUserToTask(taskId: Long, userId: Long) = flow {
+        emit(projectRepository.addUserToTask(taskId, userId))
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Get Current User Is Manager
+    fun getCurrentUserIsManager() = flow {
+        emit(projectRepository.currentUserIsManager())
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+    }.flowOn(viewModelScope.coroutineContext)
+
+    // Get All User Name
     fun getAllUserName() = flow {
-        emit(RetrofitClient.retrofitService.getAllUserName())
+        emit(projectRepository.getAllUserName())
+    }.map {
+        when (it.status){
+            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
+            else -> ProjectState.Failed(it.message)
+        }
+    }.catch {
+        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
+
+
+    sealed class ProjectState {
+        data class Loading(val msg: String): ProjectState()
+        data class Success(val res: Any) : ProjectState()
+        data class Failed(val reason: String) : ProjectState()
+    }
 }

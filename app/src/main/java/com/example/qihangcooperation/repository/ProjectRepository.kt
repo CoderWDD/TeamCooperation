@@ -6,92 +6,51 @@ import com.example.qihangcooperation.pojo.Project
 import com.example.qihangcooperation.pojo.ProjectSet
 import com.example.qihangcooperation.pojo.Task
 import com.example.qihangcooperation.pojo.TaskSet
+import com.example.qihangcooperation.response.ResponseData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class ProjectRepository(private val externalScope: CoroutineScope) {
-    fun createProject(project: Project) = flow {
-        emit(RetrofitClient.retrofitService.createProject(project = project))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun createProject(project: Project): ResponseData<Map<String, Long>> = RetrofitClient.retrofitService.createProject(project = project)
 
-    fun updateProject(project: Project, id: Long) = flow {
-        emit(RetrofitClient.retrofitService.updateProject(project = project, id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun updateProject(project: Project, id: Long) = RetrofitClient.retrofitService.updateProject(project = project, id = id)
 
-    fun deleteProject(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.deleteProject(id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun deleteProject(id: Long) = RetrofitClient.retrofitService.deleteProject(id = id)
 
-    fun deleteProjects(projectSet: ProjectSet) = flow {
-        emit(RetrofitClient.retrofitService.deleteProjects(projectSet = projectSet))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun deleteProjects(projectSet: ProjectSet) = RetrofitClient.retrofitService.deleteProjects(projectSet = projectSet)
 
-    fun getProject(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.getProject(id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getProject(id: Long) = RetrofitClient.retrofitService.getProject(id = id)
 
-    fun getAllProjects(username: String) = flow {
-        emit(RetrofitClient.retrofitService.getAllProjects(username = username))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getAllProjects(username: String) = RetrofitClient.retrofitService.getAllProjects(username = username)
 
-    fun getManageProjects(username: String) = flow {
-        emit(RetrofitClient.retrofitService.getManageProjects(username = username))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getManageProjects(username: String) = RetrofitClient.retrofitService.getManageProjects(username = username)
 
-    fun inviteUser(projectId: Long, username: String) = flow {
-        emit(RetrofitClient.retrofitService.inviteUser(id = projectId, username = username))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun inviteUser(projectId: Long, username: String) = RetrofitClient.retrofitService.inviteUser(id = projectId, username = username)
 
-    fun inviteByCode(code: String) = flow {
-        emit(RetrofitClient.retrofitService.inviteByCode(inviteCode = code))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun inviteByCode(code: String) = RetrofitClient.retrofitService.inviteByCode(inviteCode = code)
 
-    fun deleteMember(projectId: Long, username: String) = flow {
-        emit(RetrofitClient.retrofitService.deleteInvite(id = projectId, username = username))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun deleteMember(projectId: Long, username: String) = RetrofitClient.retrofitService.deleteInvite(id = projectId, username = username)
 
-    fun getPossibleMembers(projectId: Long) = flow {
-        emit(RetrofitClient.retrofitService.getProjectUsers(id = projectId))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getPossibleMembers(projectId: Long) = RetrofitClient.retrofitService.getProjectUsers(id = projectId)
 
-    fun createTask(projectId: Long, task: Task) = flow {
-        emit(RetrofitClient.retrofitService.createTask(projectId = projectId, task = task))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun createTask(projectId: Long, task: Task) = RetrofitClient.retrofitService.createTask(projectId = projectId, task = task)
 
-    fun updateTask(projectId: Long, task: Task, id: Long) = flow {
-        emit(RetrofitClient.retrofitService.updateTask(projectId = projectId, task = task, id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun updateTask(projectId: Long, task: Task, id: Long) = RetrofitClient.retrofitService.updateTask(projectId = projectId, task = task, id = id)
 
-    fun deleteTask(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.deleteTask(id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun deleteTask(id: Long) = RetrofitClient.retrofitService.deleteTask(id = id)
 
-    fun deleteTasks(taskSet: TaskSet) = flow {
-        emit(RetrofitClient.retrofitService.deleteMultiTasks(taskSet = taskSet))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun deleteTasks(taskSet: TaskSet) = RetrofitClient.retrofitService.deleteMultiTasks(taskSet = taskSet)
 
-    fun getTask(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.getTask(id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getTask(id: Long) = RetrofitClient.retrofitService.getTask(id = id)
 
-    fun getAllTasks(projectId: Long) = flow {
-        emit(RetrofitClient.retrofitService.getTaskList(projectId = projectId))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getAllTasks(projectId: Long) = RetrofitClient.retrofitService.getTaskList(projectId = projectId)
 
-    fun getAllInvitedUsers(id: Long) = flow {
-        emit(RetrofitClient.retrofitService.getAllInvitedUser(id = id))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getAllInvitedUsers(id: Long) = RetrofitClient.retrofitService.getAllInvitedUser(id = id)
 
-    fun addUserToTask(taskId: Long, userId: Long) = flow {
-        emit(RetrofitClient.retrofitService.addUserToTask(id = taskId, userId = userId))
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun addUserToTask(taskId: Long, userId: Long) = RetrofitClient.retrofitService.addUserToTask(id = taskId, userId = userId)
 
-    fun currentUserIsManager() = flow {
-        emit(RetrofitClient.retrofitService.currentUser())
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun currentUserIsManager() = RetrofitClient.retrofitService.currentUser()
 
-    fun getAllUserName() = flow {
-        emit(RetrofitClient.retrofitService.getAllUserName())
-    }.shareIn(externalScope, SharingStarted.Lazily, 1)
+    suspend fun getAllUserName() = RetrofitClient.retrofitService.getAllUserName()
 }
