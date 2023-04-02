@@ -12,4 +12,4 @@ data class Project(
     val projectUpdatedDate: LocalDateTime? = null,
     val projectEndDate: LocalDateTime,
     val user: Set<User>? = null
-)
+): java.io.Serializable

@@ -21,11 +21,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.createProject(project = project))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Projects
@@ -33,11 +33,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getAllProjects(username))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Project
@@ -45,11 +45,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getProject(projectId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Update Project
@@ -57,11 +57,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.updateProject(project, projectId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Delete Project
@@ -69,11 +69,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.deleteProject(projectId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Delete Projects
@@ -81,11 +81,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.deleteProjects(projectSet))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Manager Projects
@@ -93,11 +93,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getManageProjects(username))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Invite Member
@@ -105,11 +105,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.inviteUser(projectId, username))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Invite By Code
@@ -117,11 +117,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.inviteByCode(code))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Delete Member
@@ -129,11 +129,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.deleteMember(projectId, username))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Possible Members
@@ -141,11 +141,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getPossibleMembers(projectId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Create Task
@@ -153,11 +153,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.createTask(projectId, task))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Tasks
@@ -165,11 +165,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getAllTasks(projectId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Task
@@ -177,11 +177,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getTask(taskId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Update Task
@@ -189,11 +189,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.updateTask(projectId = projectId, task = task, id = taskId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Delete Task
@@ -201,11 +201,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.deleteTask(taskId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Delete Tasks
@@ -213,11 +213,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.deleteTasks(taskSet))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get All Invited Users
@@ -225,11 +225,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getAllInvitedUsers(projectId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Add User To Task
@@ -237,11 +237,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.addUserToTask(taskId, userId))
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get Current User Is Manager
@@ -249,11 +249,11 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.currentUserIsManager())
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
     // Get All User Name
@@ -261,17 +261,16 @@ class ProjectViewModel : ViewModel() {
         emit(projectRepository.getAllUserName())
     }.map {
         when (it.status){
-            HttpStatusConstants.SUCCESS.code -> ProjectState.Success(it.data)
-            else -> ProjectState.Failed(it.message)
+            HttpStatusConstants.SUCCESS.code -> ProjectAndTaskState.Success(it.data)
+            else -> ProjectAndTaskState.Failed(it.message)
         }
     }.catch {
-        emit(ProjectState.Failed(it.message ?: "Unknown Error"))
+        emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
     }.flowOn(viewModelScope.coroutineContext)
 
-
-    sealed class ProjectState {
-        data class Loading(val msg: String): ProjectState()
-        data class Success(val res: Any) : ProjectState()
-        data class Failed(val reason: String) : ProjectState()
+    sealed class ProjectAndTaskState<out T> {
+        data class Loading(val msg: String): ProjectAndTaskState<Nothing>()
+        data class Success<T>(val res: T) : ProjectAndTaskState<T>()
+        data class Failed(val reason: String) : ProjectAndTaskState<Nothing>()
     }
 }

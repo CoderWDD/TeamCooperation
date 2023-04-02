@@ -21,7 +21,7 @@ abstract class BaseActivity<VB: ViewBinding>(private val bindingInflate: (inflat
         super.onCreate(savedInstanceState)
         _viewBinding = bindingInflate.invoke(layoutInflater)
         setContentView(viewBinding.root)
-        hideSystemStatusBar()
+//        hideSystemStatusBar()
         onCreate()
     }
     override fun onDestroy() {
