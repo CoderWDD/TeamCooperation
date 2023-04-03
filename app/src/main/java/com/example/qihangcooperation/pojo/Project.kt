@@ -10,6 +10,6 @@ data class Project(
     val projectManager: User? = null,
     val inviteCode: String? = null,
     val projectUpdatedDate: LocalDateTime? = null,
-    val projectEndDate: LocalDateTime,
+    val projectEndDate: LocalDateTime? = null,
     val user: Set<User>? = null
 ): java.io.Serializable

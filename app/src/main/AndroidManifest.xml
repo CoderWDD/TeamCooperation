@@ -14,10 +14,13 @@
         android:theme="@style/Theme.QiHangCooperation"
         tools:targetApi="31">
         <activity
-            android:name=".TaskDetailsActivity"
+            android:name=".ProjectAddItemActivity"
             android:exported="false" />
         <activity
-            android:name=".ProjectDetailsActivity"
+            android:name=".pages.TaskDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.ProjectDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".pages.SignupActivity"

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.*
-import com.example.qihangcooperation.ProjectDetailsActivity
+import com.example.qihangcooperation.pages.ProjectDetailsActivity
 import com.example.qihangcooperation.R
 import com.example.qihangcooperation.adapter.*
 import com.example.qihangcooperation.application.CooperationApplication
@@ -42,9 +42,9 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
     private fun initRecyclerViewClickListener(){
         viewBinding.recyclerviewTodo.setOnItemClickListener { _, position ->
             // get the project and jump to the project details page
-            val project = recyclerViewList[position] as Project
+            val taskP = recyclerViewList[position] as Task
             val bundle = Bundle()
-            bundle.putSerializable("project", project)
+            bundle.putSerializable("task", taskP)
             val intent = Intent(requireActivity(), ProjectDetailsActivity::class.java)
             intent.putExtras(bundle)
             startActivity(intent)
@@ -59,15 +59,17 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
                 setPositiveButton(R.string.delete_positive_button){ _, _ ->
                     val task = recyclerViewList[position] as Task
                     viewLifecycleOwner.lifecycleScope.launch {
-                        viewModel.deleteTask(taskId = task.taskId).collect{
-                            when (it){
-                                is ProjectViewModel.ProjectAndTaskState.Success -> {
-                                    recyclerViewAdapter?.notifyItemChanged(position)
+                        task.taskId?.let { taskID ->
+                            viewModel.deleteTask(taskId = taskID).collect{
+                                when (it){
+                                    is ProjectViewModel.ProjectAndTaskState.Success -> {
+                                        recyclerViewAdapter?.notifyItemChanged(position)
+                                    }
+                                    is ProjectViewModel.ProjectAndTaskState.Failed -> {
+                                        ResponseHandler.handleError(it.reason, requireActivity())
+                                    }
+                                    else -> {}
                                 }
-                                is ProjectViewModel.ProjectAndTaskState.Failed -> {
-                                    ResponseHandler.handleError(it.reason, requireActivity())
-                                }
-                                else -> {}
                             }
                         }
                     }

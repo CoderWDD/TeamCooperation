@@ -52,6 +52,7 @@
     <string name="belong_to_project_test">TeamCooperation</string>
     <string name="item_to_do_label">Items To Do!</string>
     <string name="item_details">Item Details</string>
+    <string name="task_executor">Executor: </string>
 
     <!-- Strings related to projects -->
     <string name="projects_to_do_label">Projects To Do!</string>

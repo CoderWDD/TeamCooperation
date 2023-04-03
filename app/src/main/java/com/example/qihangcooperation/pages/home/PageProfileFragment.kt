@@ -1,17 +1,18 @@
 package com.example.qihangcooperation.pages.home
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.example.qihangcooperation.application.CooperationApplication
 import com.example.qihangcooperation.base.BaseFragment
 import com.example.qihangcooperation.databinding.FragmentPageProfileBinding
+import com.example.qihangcooperation.viewmodel.UserViewModel
 
 
 class PageProfileFragment : BaseFragment<FragmentPageProfileBinding>(FragmentPageProfileBinding::inflate) {
+    private lateinit var viewModel: UserViewModel
     override fun onCreateView() {
-        TODO("Not yet implemented")
-    }
+        viewModel = ViewModelProvider(requireActivity())[UserViewModel::class.java]
 
+        viewBinding.profileUsername.text = CooperationApplication.getUser().username
+        viewBinding.profileDescription.text = CooperationApplication.getUser().nickname
+    }
 }

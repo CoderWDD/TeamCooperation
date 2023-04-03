@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.qihangcooperation.ProjectDetailsActivity
+import com.example.qihangcooperation.pages.ProjectDetailsActivity
 import com.example.qihangcooperation.R
 import com.example.qihangcooperation.adapter.*
 import com.example.qihangcooperation.application.CooperationApplication

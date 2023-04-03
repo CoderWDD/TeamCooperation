@@ -21,7 +21,7 @@ interface NetworkService {
     suspend fun createProject(@Body project: Project): ResponseData<Map<String, Long>>
 
     @PUT("/api/project/update/{id}")
-    suspend fun updateProject(@Body project: Project, @Path("id") id: Long): ResponseData<Any>
+    suspend fun updateProject(@Body project: Project, @Path("id") id: Long): ResponseData<Unit>
 
     @DELETE("/api/project/delete/{id}")
     suspend fun deleteProject(@Path("id") id: Long): ResponseData<Any>
