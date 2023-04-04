@@ -6,14 +6,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private const val BASE_URL = "https://pan.guet.ltd:6666"
+    private const val BASE_URL = "http://pan.guet.ltd:6666/"
 
     private val client: OkHttpClient by lazy {
         OkHttpClient.Builder()
+            .addInterceptor(HeaderInterceptor())
+            .addInterceptor(RetrofitLogInterceptor())
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(HeaderInterceptor())
             .build()
     }
 

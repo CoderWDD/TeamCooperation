@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qihangcooperation.R
+import com.example.qihangcooperation.databinding.RecyclerviewTaskItemBinding
 import com.example.qihangcooperation.pojo.Task
 
 class TaskRecyclerViewProxy: RVProxy<Task, TaskViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_task_item, parent, false).let {
-            return ProjectViewHolder(it)
-        }
+        val itemBinding = RecyclerviewTaskItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TaskViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(
@@ -33,7 +33,7 @@ class TaskRecyclerViewProxy: RVProxy<Task, TaskViewHolder>() {
 
 }
 
-class TaskViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class TaskViewHolder(itemView: RecyclerviewTaskItemBinding): RecyclerView.ViewHolder(itemView.root) {
     var taskName: TextView
     var taskStatus: TextView
     var taskOwner: TextView
@@ -42,11 +42,11 @@ class TaskViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var description: TextView
 
     init {
-        taskName = itemView.findViewById(R.id.recyclerview_todo_item_item_name)
-        taskStatus = itemView.findViewById(R.id.recyclerview_todo_item_status)
-        taskOwner = itemView.findViewById(R.id.recyclerview_todo_item_creator)
-        startTime = itemView.findViewById(R.id.recyclerview_todo_item_start_time)
-        endTime = itemView.findViewById(R.id.recyclerview_todo_item_end_time)
-        description = itemView.findViewById(R.id.recyclerview_todo_item_description)
+        taskName = itemView.recyclerviewTodoItemItemName
+        taskStatus = itemView.recyclerviewTodoItemStatus
+        taskOwner = itemView.recyclerviewTodoItemCreator
+        startTime = itemView.recyclerviewTodoItemStartTime
+        endTime = itemView.recyclerviewTodoItemEndTime
+        description = itemView.recyclerviewTodoItemDescription
     }
 }

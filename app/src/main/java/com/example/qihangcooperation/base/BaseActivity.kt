@@ -31,11 +31,11 @@ abstract class BaseActivity<VB: ViewBinding>(private val bindingInflate: (inflat
 
     abstract fun onCreate()
 
-    private fun hideSystemStatusBar(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController.apply {
-                hideSystemStatusBar()
-            }
-        }
-    }
+//    private fun hideSystemStatusBar(){
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            window.insetsController.apply {
+//                hideSystemStatusBar()
+//            }
+//        }
+//    }
 }

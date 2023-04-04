@@ -8,6 +8,7 @@ import com.example.qihangcooperation.pojo.ProjectSet
 import com.example.qihangcooperation.pojo.Task
 import com.example.qihangcooperation.pojo.TaskSet
 import com.example.qihangcooperation.repository.ProjectRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -26,7 +27,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Projects
     fun getProjects(username: String) = flow {
@@ -38,7 +39,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Project
     fun getProject(projectId: Long) = flow {
@@ -50,7 +51,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Update Project
     fun updateProject(project: Project, projectId: Long) = flow {
@@ -62,7 +63,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Delete Project
     fun deleteProject(projectId: Long) = flow {
@@ -74,7 +75,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Delete Projects
     fun deleteProjects(projectSet: ProjectSet) = flow {
@@ -86,7 +87,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Manager Projects
     fun getManageProjects(username: String) = flow {
@@ -98,7 +99,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Invite Member
     fun inviteMember(projectId: Long, username: String) = flow {
@@ -110,7 +111,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Invite By Code
     fun inviteByCode(code: String) = flow {
@@ -122,7 +123,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Delete Member
     fun deleteMember(projectId: Long, username: String) = flow {
@@ -134,7 +135,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Possible Members
     fun getPossibleMembers(projectId: Long) = flow {
@@ -146,7 +147,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Create Task
     fun createTask(projectId: Long, task: Task) = flow {
@@ -158,7 +159,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Tasks
     fun getTasks(projectId: Long) = flow {
@@ -170,7 +171,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Task
     fun getTask(taskId: Long) = flow {
@@ -182,7 +183,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Update Task
     fun updateTask(projectId: Long, taskId: Long, task: Task) = flow {
@@ -194,7 +195,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Delete Task
     fun deleteTask(taskId: Long) = flow {
@@ -206,7 +207,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Delete Tasks
     fun deleteTasks(taskSet: TaskSet) = flow {
@@ -218,7 +219,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get All Invited Users
     fun getAllInvitedUsers(projectId: Long) = flow {
@@ -230,7 +231,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Add User To Task
     fun addUserToTask(taskId: Long, userId: Long) = flow {
@@ -242,7 +243,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get Current User Is Manager
     fun getCurrentUserIsManager() = flow {
@@ -254,7 +255,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     // Get All User Name
     fun getAllUserName() = flow {
@@ -266,7 +267,7 @@ class ProjectViewModel : ViewModel() {
         }
     }.catch {
         emit(ProjectAndTaskState.Failed(it.message ?: "Unknown Error"))
-    }.flowOn(viewModelScope.coroutineContext)
+    }.flowOn(Dispatchers.IO)
 
     sealed class ProjectAndTaskState<out T> {
         data class Loading(val msg: String): ProjectAndTaskState<Nothing>()

@@ -8,7 +8,7 @@ class CooperationApplication : Application(){
 
     companion object{
         private lateinit var user: User
-        private lateinit var token: Map<String, String>
+        private lateinit var token: String
 
         fun setUser(user: User){
             this.user = user
@@ -18,7 +18,7 @@ class CooperationApplication : Application(){
 
         fun getGlobalToken() = token
 
-        fun setGlobalToken(token: Map<String, String>) { this.token = token}
+        fun setGlobalToken(token: String) { this.token = token}
     }
 
 

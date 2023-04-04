@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.qihangcooperation.R
+import com.example.qihangcooperation.databinding.RecyclerviewProjectItemBinding
 import com.example.qihangcooperation.pojo.Project
 
 class ProjectRecyclerViewProxy: RVProxy<Project, ProjectViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_project_item, parent, false).let {
-            return ProjectViewHolder(it)
-        }
+        val view = RecyclerviewProjectItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProjectViewHolder(view)
     }
 
     override fun onBindViewHolder(
@@ -33,7 +33,7 @@ class ProjectRecyclerViewProxy: RVProxy<Project, ProjectViewHolder>() {
 
 }
 
-class ProjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class ProjectViewHolder(itemView: RecyclerviewProjectItemBinding): RecyclerView.ViewHolder(itemView.root) {
     var projectName: TextView
     var projectInviteCode: TextView
     var projectStatus: TextView
@@ -42,11 +42,11 @@ class ProjectViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     var description: TextView
 
     init {
-        projectName = itemView.findViewById(R.id.recyclerview_projects_project_name)
-        projectInviteCode = itemView.findViewById(R.id.recyclerview_projects_invitation_code)
-        projectStatus = itemView.findViewById(R.id.recyclerview_projects_status)
-        projectCreator = itemView.findViewById(R.id.recyclerview_projects_creator)
-        createTime = itemView.findViewById(R.id.recyclerview_projects_create_time)
-        description = itemView.findViewById(R.id.recyclerview_projects_description)
+        projectName = itemView.recyclerviewProjectsProjectName
+        projectInviteCode = itemView.recyclerviewProjectsInvitationCode
+        projectStatus = itemView.recyclerviewProjectsStatus
+        projectCreator = itemView.recyclerviewProjectsCreator
+        createTime = itemView.recyclerviewProjectsCreateTime
+        description = itemView.recyclerviewProjectsDescription
     }
 }

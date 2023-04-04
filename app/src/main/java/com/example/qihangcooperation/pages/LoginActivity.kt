@@ -11,6 +11,7 @@ import com.example.qihangcooperation.application.CooperationApplication
 import com.example.qihangcooperation.base.BaseActivity
 import com.example.qihangcooperation.constants.ActivityResultConstants
 import com.example.qihangcooperation.databinding.ActivityLoginBinding
+import com.example.qihangcooperation.pojo.User
 import com.example.qihangcooperation.util.ResponseHandler
 import com.example.qihangcooperation.viewmodel.LoginRes
 import com.example.qihangcooperation.viewmodel.UserViewModel
@@ -56,7 +57,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                         is LoginRes.Error -> ResponseHandler.handleError(it.error, this@LoginActivity)
                         is LoginRes.Success -> {
                             // save token to application store
-                            CooperationApplication.setGlobalToken(it.token)
+                            CooperationApplication.setGlobalToken(it.token["token"] ?: "")
+                            CooperationApplication.setUser(User(username = viewBinding.loginEtUsername.text.toString()))
                             // switch to the main activity
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

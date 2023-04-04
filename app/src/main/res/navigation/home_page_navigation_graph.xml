@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/pageItemToDoFragment"
-        android:name="com.example.cooperation.PageItemToDoFragment"
+        android:name="com.example.qihangcooperation.pages.home.PageItemToDoFragment"
         android:label="fragment_page_item_to_do"
         tools:layout="@layout/fragment_page_item_to_do" />
     <fragment
         android:id="@+id/pageProjectsFragment"
-        android:name="com.example.cooperation.PageProjectsFragment"
+        android:name="com.example.qihangcooperation.pages.home.PageProjectsFragment"
         android:label="fragment_page_projects"
         tools:layout="@layout/fragment_page_projects" />
     <fragment
         android:id="@+id/pageProfileFragment"
-        android:name="com.example.cooperation.PageProfileFragment"
+        android:name="com.example.qihangcooperation.pages.home.PageProfileFragment"
         android:label="fragment_page_profile"
         tools:layout="@layout/fragment_page_profile" />
 </navigation>

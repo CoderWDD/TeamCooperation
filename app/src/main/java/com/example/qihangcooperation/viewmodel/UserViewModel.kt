@@ -1,9 +1,9 @@
 package com.example.qihangcooperation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.qihangcooperation.constants.HttpStatusConstants
-import com.example.qihangcooperation.pojo.User
 import com.example.qihangcooperation.pojo.UserDTO
 import com.example.qihangcooperation.repository.UserRepository
 import kotlinx.coroutines.flow.*

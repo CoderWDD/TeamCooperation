@@ -1,9 +1,6 @@
 package com.example.qihangcooperation.pages
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import com.example.qihangcooperation.R
 import com.example.qihangcooperation.base.BaseActivity
 import com.example.qihangcooperation.databinding.ActivityTaskDetailsBinding
 import com.example.qihangcooperation.pojo.Task

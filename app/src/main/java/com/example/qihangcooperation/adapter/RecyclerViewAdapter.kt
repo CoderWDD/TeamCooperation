@@ -16,7 +16,7 @@ class RecyclerViewAdapter(
 
     // viewType should start with 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return proxyList[viewType].onCreateViewHolder(parent, viewType)
+        return proxyList[0].onCreateViewHolder(parent, viewType)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -31,7 +31,7 @@ class RecyclerViewAdapter(
     override fun getItemCount(): Int = dataList.size
 
     override fun getItemViewType(position: Int): Int {
-        return getProxyIndex(dataList[position])
+        return 0
     }
 
     // 获取策略在列表中的索引
