@@ -3,12 +3,10 @@ package com.example.qihangcooperation.pages
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.example.qihangcooperation.ProjectAddItemActivity
 import com.example.qihangcooperation.R
 import com.example.qihangcooperation.application.CooperationApplication
 import com.example.qihangcooperation.base.BaseActivity
@@ -68,7 +66,7 @@ class ProjectDetailsActivity : BaseActivity<ActivityProjectDetailsBinding>(Activ
             )
             lifecycleScope.launch {
                 lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
-                    viewModel.updateProject(projectId = project.projectId, project = project).collect{
+                    viewModel.updateProject(projectId = project.projectId ?: 0, project = project).collect{
                         when (it){
                             is ProjectViewModel.ProjectAndTaskState.Success -> {
                                 ResponseHandler.handleSuccess("修改成功", this@ProjectDetailsActivity)

@@ -15,6 +15,9 @@ import com.example.qihangcooperation.application.CooperationApplication
 import com.example.qihangcooperation.base.BaseFragment
 import com.example.qihangcooperation.constants.ProjectAndTaskStatus
 import com.example.qihangcooperation.databinding.FragmentPageProjectsBinding
+import com.example.qihangcooperation.dialog.FloatingActionBarDialog
+import com.example.qihangcooperation.dialog.callbacks.AddProjectCallback
+import com.example.qihangcooperation.dialog.callbacks.JoinProjectCallback
 import com.example.qihangcooperation.pojo.Project
 import com.example.qihangcooperation.util.ResponseHandler
 import com.example.qihangcooperation.viewmodel.ProjectViewModel
@@ -38,6 +41,55 @@ class PageProjectsFragment : BaseFragment<FragmentPageProjectsBinding>(FragmentP
 
         // set the recyclerView click listener
         initRecyclerViewClickListener()
+
+        initFloatingActionButton()
+    }
+
+    private fun initFloatingActionButton(){
+        viewBinding.floatingActionButton.setOnClickListener {
+            FloatingActionBarDialog(
+                context = requireContext(),
+                addProjectCallback = object : AddProjectCallback{
+                override fun addProject(projectName: String, projectDesc: String) {
+                    val project = Project(projectName = projectName, projectDescription = projectDesc)
+                    lifecycleScope.launch {
+                        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+                            viewModel.createProject(project).collect{
+                                when (it){
+                                    is ProjectViewModel.ProjectAndTaskState.Success -> {
+                                        getProjectsBySelect()
+                                    }
+                                    is ProjectViewModel.ProjectAndTaskState.Failed -> {
+                                        ResponseHandler.handleError(it.reason, requireActivity())
+                                    }
+                                    else -> {}
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+                joinProjectCallback = object : JoinProjectCallback{
+                    override fun joinProject(inviteCode: String) {
+                        lifecycleScope.launch {
+                            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+                                viewModel.inviteByCode(inviteCode).collect{
+                                    when (it){
+                                        is ProjectViewModel.ProjectAndTaskState.Success -> {
+                                            getProjectsBySelect()
+                                        }
+                                        is ProjectViewModel.ProjectAndTaskState.Failed -> {
+                                            ResponseHandler.handleError(it.reason, requireActivity())
+                                        }
+                                        else -> {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }).show()
+        }
     }
 
     private fun initRecyclerViewClickListener(){
@@ -60,7 +112,7 @@ class PageProjectsFragment : BaseFragment<FragmentPageProjectsBinding>(FragmentP
                 setPositiveButton(R.string.delete_positive_button){ _, _ ->
                     val project = recyclerViewList[position] as Project
                     viewLifecycleOwner.lifecycleScope.launch {
-                        viewModel.deleteProject(projectId = project.projectId).collect{
+                        viewModel.deleteProject(projectId = project.projectId!!).collect{
                             when (it){
                                 is ProjectViewModel.ProjectAndTaskState.Success -> {
                                     recyclerViewAdapter?.notifyItemChanged(position)

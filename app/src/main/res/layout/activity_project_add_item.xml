@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProjectAddItemActivity">
+    tools:context=".pages.ProjectAddItemActivity">
 
     <TextView
         android:id="@+id/useless_item_details_table"

@@ -53,4 +53,6 @@ class ProjectRepository(private val externalScope: CoroutineScope) {
     suspend fun currentUserIsManager() = RetrofitClient.retrofitService.currentUser()
 
     suspend fun getAllUserName() = RetrofitClient.retrofitService.getAllUserName()
+
+    suspend fun getAllTaskByUser() = RetrofitClient.retrofitService.getAllTasksByUser()
 }

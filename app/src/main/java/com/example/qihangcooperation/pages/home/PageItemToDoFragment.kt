@@ -23,7 +23,7 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
     private val username = CooperationApplication.getUser().username
     private lateinit var viewModel: ProjectViewModel
     private var recyclerViewAdapter: RecyclerViewAdapter? = null
-    private lateinit var recyclerViewList: MutableList<Task>
+    private lateinit var recyclerViewList: MutableList<Any>
 
     override fun onCreateView() {
         // set the viewModelStoreOwner of the viewModel to activity
@@ -45,6 +45,8 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
             val taskP = recyclerViewList[position] as Task
             val bundle = Bundle()
             bundle.putSerializable("task", taskP)
+            // todo add projectID
+//            bundle.putLong("projectID", )
             val intent = Intent(requireActivity(), ProjectDetailsActivity::class.java)
             intent.putExtras(bundle)
             startActivity(intent)
@@ -98,37 +100,37 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 // todo get the tasks by project list
-//                viewModel.getTasks(username).collect{ listProjects ->
-//                    when (listProjects) {
-//                        is ProjectViewModel.ProjectAndTaskState.Success -> {
-//                            viewBinding.refreshItemList.isRefreshing = false
-//                            // check the checkBox and show pick the right status of project, finally set the adapter
-//                            val predicate: (Project) -> Boolean = {
-//                                val doing = viewBinding.itemStatusDoing.isChecked
-//                                val todo = viewBinding.itemStatusTodo.isChecked
-//                                val done = viewBinding.itemStatusDone.isChecked
-//                                (doing && it.projectStatus == ProjectAndTaskStatus.DOING.status) || (todo && it.projectStatus == ProjectAndTaskStatus.TODO.status) || (done && it.projectStatus == ProjectAndTaskStatus.DONE.status)
-//                            }
-//                            val filterRes = listProjects.res.filter(predicate)
-//                            recyclerViewList = mutableListOf(filterRes)
-//                            val taskProxy = TaskRecyclerViewProxy()
-//                            val proxyList = mutableListOf<RVProxy<*, *>>(taskProxy)
-//                            if (recyclerViewAdapter != null) {
-//                                recyclerViewAdapter!!.notifyDataSetChanged()
-//                            }else {
-//                                recyclerViewAdapter = RecyclerViewAdapter(dataList = recyclerViewList, proxyList = proxyList)
-//                                viewBinding.recyclerviewTodo.adapter = recyclerViewAdapter
-//                            }
-//                        }
-//                        is ProjectViewModel.ProjectAndTaskState.Failed -> {
-//                            viewBinding.refreshItemList.isRefreshing = false
-//                            ResponseHandler.handleError(listProjects.reason, requireActivity())
-//                        }
-//                        is ProjectViewModel.ProjectAndTaskState.Loading -> {
-//                            viewBinding.refreshItemList.isRefreshing = true
-//                        }
-//                    }
-//                }
+                viewModel.getAllTaskByUser().collect{ listTasks ->
+                    when (listTasks) {
+                        is ProjectViewModel.ProjectAndTaskState.Success -> {
+                            viewBinding.refreshItemList.isRefreshing = false
+                            // check the checkBox and show pick the right status of project, finally set the adapter
+                            val predicate: (Task) -> Boolean = {
+                                val doing = viewBinding.itemStatusDoing.isChecked
+                                val todo = viewBinding.itemStatusTodo.isChecked
+                                val done = viewBinding.itemStatusDone.isChecked
+                                (doing && it.status == ProjectAndTaskStatus.DOING.status) || (todo && it.status == ProjectAndTaskStatus.TODO.status) || (done && it.status == ProjectAndTaskStatus.DONE.status)
+                            }
+                            val filterRes = listTasks.res.filter(predicate)
+                            recyclerViewList = filterRes.toMutableList()
+                            val taskProxy = TaskRecyclerViewProxy()
+                            val proxyList = mutableListOf<RVProxy<*, *>>(taskProxy)
+                            if (recyclerViewAdapter != null) {
+                                recyclerViewAdapter!!.notifyDataSetChanged()
+                            }else {
+                                recyclerViewAdapter = RecyclerViewAdapter(dataList = recyclerViewList, proxyList = proxyList)
+                                viewBinding.recyclerviewTodo.adapter = recyclerViewAdapter
+                            }
+                        }
+                        is ProjectViewModel.ProjectAndTaskState.Failed -> {
+                            viewBinding.refreshItemList.isRefreshing = false
+                            ResponseHandler.handleError(listTasks.reason, requireActivity())
+                        }
+                        is ProjectViewModel.ProjectAndTaskState.Loading -> {
+                            viewBinding.refreshItemList.isRefreshing = true
+                        }
+                    }
+                }
             }
         }
     }

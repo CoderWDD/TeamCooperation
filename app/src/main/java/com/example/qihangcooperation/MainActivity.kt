@@ -10,7 +10,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     override fun onCreate() {
         // init bottom navigation
         val navHostFragment = (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment?)
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        val bottomNavigationView = viewBinding.bottomNav
         navHostFragment?.navController?.let {
             setupWithNavController(bottomNavigationView, it)
         }

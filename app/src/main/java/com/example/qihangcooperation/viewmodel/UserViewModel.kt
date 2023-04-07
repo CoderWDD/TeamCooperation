@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class UserViewModel: ViewModel() {
 
-    private val userRepository: UserRepository = UserRepository(viewModelScope)
+    private val userRepository: UserRepository = UserRepository()
     private val _loginRes: MutableStateFlow<LoginRes> = MutableStateFlow(LoginRes.NotReady)
     val loginRes: StateFlow<LoginRes> = _loginRes
 

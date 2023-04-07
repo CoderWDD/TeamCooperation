@@ -1,8 +1,9 @@
-package com.example.qihangcooperation
+package com.example.qihangcooperation.pages
 
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.example.qihangcooperation.R
 import com.example.qihangcooperation.application.CooperationApplication
 import com.example.qihangcooperation.base.BaseActivity
 import com.example.qihangcooperation.databinding.ActivityProjectAddItemBinding
@@ -72,7 +73,7 @@ class ProjectAddItemActivity : BaseActivity<ActivityProjectAddItemBinding>(Activ
                 taskOwner = owner[0],
             )
             lifecycleScope.launch{
-                viewModel.createTask(projectId = project.projectId, task = task).collect{
+                viewModel.createTask(projectId = project.projectId ?: 0, task = task).collect{
                     when (it) {
                         is ProjectViewModel.ProjectAndTaskState.Success -> {
                             ResponseHandler.handleSuccess("创建任务成功", this@ProjectAddItemActivity)
