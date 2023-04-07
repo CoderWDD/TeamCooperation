@@ -3,6 +3,7 @@ package com.example.qihangcooperation.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import com.example.qihangcooperation.R
@@ -13,9 +14,18 @@ class JoinProjectDialog(private val context: Context, private val callback: Join
     private lateinit var projectInvitationCodeEV: EditText
 
     init {
-        setContentView(R.layout.add_project_dialog)
+        setContentView(R.layout.join_project_layout)
         setCanceledOnTouchOutside(true)
         setAnimationsBottomUp()
+        initDialogSize()
+    }
+
+    private fun initDialogSize(){
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(window?.attributes)
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+        window?.attributes = lp
     }
 
     private fun setAnimationsBottomUp() {
@@ -24,7 +34,7 @@ class JoinProjectDialog(private val context: Context, private val callback: Join
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        joinProjectButton = findViewById(R.id.join_to_project_button)
+        joinProjectButton = findViewById(R.id.join_into_project_button)
         projectInvitationCodeEV = findViewById(R.id.join_project_invitation_code)
 
         initButtonClickListener()

@@ -3,6 +3,7 @@ package com.example.qihangcooperation.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import com.example.qihangcooperation.R
 import com.example.qihangcooperation.dialog.callbacks.AddProjectCallback
@@ -15,6 +16,15 @@ class FloatingActionBarDialog(private val context: Context, private val addProje
         setContentView(R.layout.floating_button_dialog_layout)
         setCanceledOnTouchOutside(true)
         setAnimationsBottomUp()
+        initDialogSize()
+    }
+
+    private fun initDialogSize(){
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(window?.attributes)
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+        window?.attributes = lp
     }
 
     private fun setAnimationsBottomUp() {

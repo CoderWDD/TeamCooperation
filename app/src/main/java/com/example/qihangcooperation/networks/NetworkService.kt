@@ -80,7 +80,7 @@ interface NetworkService {
     @GET("/api/user/get/all")
     suspend fun getAllUserName(): ResponseData<List<String>>
 
-    @GET("/api/user/get/all/user")
+    @GET("/api/task/get/all/user")
     suspend fun getAllTasksByUser(): ResponseData<List<Task>>
 
 }

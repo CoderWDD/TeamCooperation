@@ -24,7 +24,7 @@ class ProjectDetailsActivity : BaseActivity<ActivityProjectDetailsBinding>(Activ
     private val username = CooperationApplication.getUser().username
     override fun onCreate() {
         viewModel = ViewModelProvider(this)[ProjectViewModel::class.java]
-        project = intent.extras?.get("project") as Project
+        project = intent.extras?.getSerializable("project") as Project?
         initProjectView()
         initClickListener()
     }

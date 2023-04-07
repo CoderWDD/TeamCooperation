@@ -160,7 +160,7 @@ class PageProjectsFragment : BaseFragment<FragmentPageProjectsBinding>(FragmentP
                                 (doing && it.projectStatus == ProjectAndTaskStatus.DOING.status) || (todo && it.projectStatus == ProjectAndTaskStatus.TODO.status) || (done && it.projectStatus == ProjectAndTaskStatus.DONE.status)
                             }
                             val filterRes = listProjects.res.filter(predicate)
-                            recyclerViewList = mutableListOf(filterRes)
+                            recyclerViewList = filterRes.toMutableList()
                             val projectProxy = ProjectRecyclerViewProxy()
                             val proxyList = mutableListOf<RVProxy<*, *>>(projectProxy)
                             if (recyclerViewAdapter != null) {

@@ -6,4 +6,4 @@ data class User(
     val password: String = "",
     val email: String = "",
     val nickname: String = ""
-)
+): java.io.Serializable

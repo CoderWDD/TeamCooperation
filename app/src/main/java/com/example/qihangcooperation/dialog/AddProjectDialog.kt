@@ -3,10 +3,9 @@ package com.example.qihangcooperation.dialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
-import androidx.lifecycle.ViewModelProvider
-import com.example.qihangcooperation.MainActivity
 import com.example.qihangcooperation.R
 import com.example.qihangcooperation.dialog.callbacks.AddProjectCallback
 
@@ -19,6 +18,15 @@ class AddProjectDialog(private val context: Context, private val callback: AddPr
         setContentView(R.layout.add_project_dialog)
         setCanceledOnTouchOutside(true)
         setAnimationsBottomUp()
+        initDialogSize()
+    }
+
+    private fun initDialogSize(){
+        val lp = WindowManager.LayoutParams()
+        lp.copyFrom(window?.attributes)
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT
+        window?.attributes = lp
     }
 
     private fun setAnimationsBottomUp() {

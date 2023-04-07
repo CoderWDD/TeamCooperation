@@ -20,10 +20,12 @@ class ProjectAddItemActivity : BaseActivity<ActivityProjectAddItemBinding>(Activ
     private val username = CooperationApplication.getUser().username
     private lateinit var project: Project
     private lateinit var viewModel: ProjectViewModel
+    private lateinit var projectCooperators: MutableList<String>
     override fun onCreate() {
         viewModel = ViewModelProvider(this)[ProjectViewModel::class.java]
         val bundle = intent.extras
         project = bundle!!.getSerializable("project") as Project
+        projectCooperators = project.user?.map { it.username }?.toMutableList() ?: mutableListOf()
 
         initTaskView()
         initClickListener()
@@ -64,8 +66,8 @@ class ProjectAddItemActivity : BaseActivity<ActivityProjectAddItemBinding>(Activ
             val taskName = viewBinding.taskName.text.toString()
             val taskDescription = viewBinding.taskDescription.text.toString()
             val taskStatus = viewBinding.spinnerStatus.selectedItem.toString()
-            val taskExecutor = viewBinding.spinnerExecutor.selectedItem.toString()
-            val owner = project.user?.filter { it.username == taskExecutor }?.toList() ?: listOf()
+            val taskExecutor = viewBinding.spinnerExecutor.selectedItem?.toString()
+            val owner = project.user?.filter { it.username == taskExecutor }?.toList() ?: listOf(CooperationApplication.getUser())
             val task = Task(
                 taskName = taskName,
                 description = taskDescription,

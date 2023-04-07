@@ -19,7 +19,6 @@ class TaskDetailsActivity : BaseActivity<ActivityTaskDetailsBinding>(ActivityTas
     override fun onCreate() {
         viewModel = ViewModelProvider(this)[ProjectViewModel::class.java]
         intent.extras?.getSerializable("task")?.let { task = it as Task }
-        intent.extras?.getLong("projectId")?.let { projectId = it }
 
         initTaskView()
         initClickListener()

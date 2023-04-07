@@ -12,6 +12,7 @@ import com.example.qihangcooperation.application.CooperationApplication
 import com.example.qihangcooperation.base.BaseFragment
 import com.example.qihangcooperation.constants.ProjectAndTaskStatus
 import com.example.qihangcooperation.databinding.FragmentPageItemToDoBinding
+import com.example.qihangcooperation.pages.TaskDetailsActivity
 import com.example.qihangcooperation.pojo.Project
 import com.example.qihangcooperation.pojo.Task
 import com.example.qihangcooperation.util.ResponseHandler
@@ -45,9 +46,7 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
             val taskP = recyclerViewList[position] as Task
             val bundle = Bundle()
             bundle.putSerializable("task", taskP)
-            // todo add projectID
-//            bundle.putLong("projectID", )
-            val intent = Intent(requireActivity(), ProjectDetailsActivity::class.java)
+            val intent = Intent(requireActivity(), TaskDetailsActivity::class.java)
             intent.putExtras(bundle)
             startActivity(intent)
         }
@@ -99,11 +98,9 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
     private fun getTasksBySelect(){
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
-                // todo get the tasks by project list
                 viewModel.getAllTaskByUser().collect{ listTasks ->
                     when (listTasks) {
                         is ProjectViewModel.ProjectAndTaskState.Success -> {
-                            viewBinding.refreshItemList.isRefreshing = false
                             // check the checkBox and show pick the right status of project, finally set the adapter
                             val predicate: (Task) -> Boolean = {
                                 val doing = viewBinding.itemStatusDoing.isChecked
@@ -121,6 +118,7 @@ class PageItemToDoFragment : BaseFragment<FragmentPageItemToDoBinding>(FragmentP
                                 recyclerViewAdapter = RecyclerViewAdapter(dataList = recyclerViewList, proxyList = proxyList)
                                 viewBinding.recyclerviewTodo.adapter = recyclerViewAdapter
                             }
+                            viewBinding.refreshItemList.isRefreshing = false
                         }
                         is ProjectViewModel.ProjectAndTaskState.Failed -> {
                             viewBinding.refreshItemList.isRefreshing = false

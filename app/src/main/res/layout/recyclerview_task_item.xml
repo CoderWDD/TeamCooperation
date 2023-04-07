@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
@@ -50,7 +50,6 @@
                         android:id="@+id/recyclerview_todo_item_item_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{taskItem.itemName}"
                         android:fontFamily="@font/no236"
                         android:textSize="20sp"
                         android:textColor="@color/orange_brown_item"/>
@@ -76,7 +75,6 @@
                         android:id="@+id/recyclerview_todo_item_project"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{taskItem.projectName}"
                         android:fontFamily="@font/no236"
                         android:textSize="20sp"
                         android:textColor="@color/orange_brown_item"/>
@@ -128,7 +126,6 @@
                         android:id="@+id/recyclerview_todo_item_end_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{taskItem.executor}"
                         android:fontFamily="@font/no236"
                         android:textSize="20sp"
                         android:textColor="@color/orange_brown_item"/>
@@ -154,7 +151,6 @@
                         android:id="@+id/recyclerview_todo_item_creator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{taskItem.author}"
                         android:fontFamily="@font/no236"
                         android:textSize="20sp"
                         android:textColor="@color/orange_brown_item"/>
@@ -180,7 +176,6 @@
                         android:id="@+id/recyclerview_todo_item_start_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{taskItem.itemTime.toString()}"
                         android:fontFamily="@font/no236"
                         android:textSize="20sp"
                         android:textColor="@color/orange_brown_item"/>
@@ -207,7 +202,6 @@
                         android:id="@+id/recyclerview_todo_item_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{taskItem.description}"
                         android:fontFamily="@font/no236"
                         android:textSize="20sp"
                         android:textColor="@color/orange_brown_item"/>

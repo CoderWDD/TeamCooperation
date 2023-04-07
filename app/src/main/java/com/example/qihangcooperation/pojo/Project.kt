@@ -10,7 +10,7 @@ data class Project(
     val projectStatus: String = ProjectAndTaskStatus.TODO.status,
     val projectManager: User? = null,
     val inviteCode: String? = null,
-    val projectUpdatedDate: LocalDateTime? = null,
-    val projectEndDate: LocalDateTime? = null,
+    val projectUpdatedDate: String? = null,
+    val projectEndDate: String? = null,
     val user: Set<User>? = null
 ): java.io.Serializable
